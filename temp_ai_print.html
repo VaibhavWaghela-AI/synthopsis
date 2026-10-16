@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Upteky AI Interview - 50 Questions & Coding</title>
+  <style>
+    @page { size: A4; margin: 16mm 14mm 16mm 14mm; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #1e293b; line-height: 1.55; font-size: 13px; margin: 0; padding: 0; }
+    h1 { color: #0f172a; font-size: 18px; border-bottom: 2px solid #2563eb; padding-bottom: 5px; margin-top: 24px; page-break-after: avoid; }
+    h3 { color: #1d4ed8; font-size: 13.5px; margin-top: 12px; margin-bottom: 4px; page-break-after: avoid; }
+    blockquote { margin: 4px 0 12px 0; padding: 7px 12px; background: #f8fafc; border-left: 3.5px solid #2563eb; color: #334155; font-size: 12.5px; border-radius: 0 5px 5px 0; page-break-inside: avoid; }
+    pre { background: #0f172a; color: #f8fafc; padding: 10px 14px; border-radius: 6px; font-size: 11.5px; overflow-x: auto; page-break-inside: avoid; font-family: Consolas, monospace; }
+    code { font-family: Consolas, monospace; font-size: 11.5px; }
+    p code, li code { background: #e2e8f0; color: #b91c1c; padding: 1px 4px; border-radius: 3px; }
+    .header-doc { text-align: center; border-bottom: 3px double #94a3b8; padding-bottom: 10px; margin-bottom: 18px; }
+    .header-doc h2 { margin: 0 0 4px 0; color: #0f172a; font-size: 20px; }
+    .header-doc p { margin: 0; color: #64748b; font-size: 12.5px; }
+  </style>
+</head>
+<body>
+  <div class="header-doc">
+    <h2>🧠 Upteky AI/ML Interview: 50 Questions & Coding Challenges</h2>
+    <p><b>Candidate:</b> Vaibhav Waghela • <b>Focus:</b> LangGraph, RAG, PEFT/LoRA, PyTorch, TinyML, Multi-Agent</p>
+  </div>
+  <h1>🧠 50 AI Interview Questions &amp; Coding Practice Guide</h1>
+<blockquote>
+<p>Tailored strictly to the <strong>AI/ML &amp; NLP skills and projects</strong> on your resume:
+<strong>LangGraph, LangChain, RAG, ChromaDB, LoRA/PEFT, Transformers, PyTorch, TinyML, and Multi-Agent Systems.</strong></p>
+</blockquote>
+<hr />
+<h1>🌟 PART 1: 25 SIMPLE &amp; FUNDAMENTAL AI QUESTIONS (1-Minute Answers)</h1>
+<blockquote>
+<p>Perfect for quick warm-ups and sanity checks during a 30-minute interview. Keep answers to 2–3 sentences.</p>
+</blockquote>
+<hr />
+<h3>S_Q1: What is an LLM (Large Language Model)?</h3>
+<blockquote>
+<p>An LLM is a deep learning model based on the Transformer architecture trained on massive amounts of text. Its core objective is predicting the next most likely token in a sequence, allowing it to understand, generate, and summarize natural language.</p>
+</blockquote>
+<h3>S_Q2: What is a Token?</h3>
+<blockquote>
+<p>A token is the basic unit of text that an LLM processes. It can be a whole word, a sub-word, or a single character. On average, 1 token is roughly 4 characters or about 0.75 words in English.</p>
+</blockquote>
+<h3>S_Q3: What is a Context Window?</h3>
+<blockquote>
+<p>The context window is the maximum number of tokens an LLM can take in as input and output combined in a single request. If a conversation exceeds the context window, earlier messages must be truncated or summarized, or the model fails with a token limit error.</p>
+</blockquote>
+<h3>S_Q4: What does "Temperature" do in LLM generation?</h3>
+<blockquote>
+<p>Temperature controls the randomness of predictions. At temperature <code>0.0</code>, the model always greedily selects the single highest-probability token (deterministic). At higher temperatures like <code>0.7</code> to <code>1.0</code>, it samples from lower-probability tokens, making responses more creative and diverse.</p>
+</blockquote>
+<h3>S_Q5: What is Top-P (Nucleus Sampling)?</h3>
+<blockquote>
+<p>Top-P limits the model's choices to the smallest set of tokens whose cumulative probability exceeds the threshold $P$ (e.g., top 90% of probability mass). Unlike fixed Top-K, Top-P dynamically adjusts how many candidate tokens to consider based on model confidence.</p>
+</blockquote>
+<h3>S_Q6: What is the difference between AI, Machine Learning, and Deep Learning?</h3>
+<blockquote>
+<p>AI is the broad umbrella concept of machines performing tasks that normally require human intelligence. Machine Learning is a subset of AI where systems learn patterns from data without being explicitly programmed. Deep Learning is a subset of ML using multi-layered artificial neural networks (like CNNs, RNNs, and Transformers).</p>
+</blockquote>
+<h3>S_Q7: What is Supervised vs Unsupervised Learning?</h3>
+<blockquote>
+<p>Supervised learning trains on labeled data (input $X$ paired with correct output $Y$) to predict targets (e.g., spam detection or house prices). Unsupervised learning trains on unlabeled data to discover hidden patterns or clusters on its own (e.g., customer segmentation or dimensionality reduction).</p>
+</blockquote>
+<h3>S_Q8: What is Overfitting and Underfitting?</h3>
+<blockquote>
+<p>Overfitting happens when a model learns training data too well, including its noise, and performs poorly on new test data (high variance). Underfitting occurs when the model is too simple to capture underlying patterns even on training data (high bias).</p>
+</blockquote>
+<h3>S_Q9: What is an Embedding?</h3>
+<blockquote>
+<p>An embedding is a list of numbers (a dense vector) that represents the semantic meaning of a word, sentence, or document. Words with similar meanings have vectors that point in nearly the same direction in vector space.</p>
+</blockquote>
+<h3>S_Q10: What is a Vector Database in simple words?</h3>
+<blockquote>
+<p>A vector database is a specialized database built to store embeddings and find the most similar ones in milliseconds using vector math (like cosine similarity), rather than exact keyword or row matching like SQL.</p>
+</blockquote>
+<h3>S_Q11: What is RAG (Retrieval-Augmented Generation) in plain English?</h3>
+<blockquote>
+<p>RAG is like an open-book exam for an LLM. Instead of relying solely on what the model memorized during training, you search your documents for relevant facts first, paste them into the prompt, and ask the model to answer based only on that context.</p>
+</blockquote>
+<h3>S_Q12: What is an AI Agent?</h3>
+<blockquote>
+<p>An AI agent is an LLM given goals, memory, and tools (like web search, a Python interpreter, or database queries). Instead of just generating text, the agent decides which tools to call in a loop until the user's objective is completed.</p>
+</blockquote>
+<h3>S_Q13: What is the difference between a System Prompt and a User Prompt?</h3>
+<blockquote>
+<p>The System Prompt sets the rules, personality, guardrails, and role of the assistant (e.g., "You are a customer support agent. Answer concisely"). The User Prompt is the actual query or message sent by the human.</p>
+</blockquote>
+<h3>S_Q14: What is Zero-Shot vs Few-Shot Prompting?</h3>
+<blockquote>
+<p>Zero-shot means asking the model to perform a task with no examples given. Few-shot means providing 2 or 3 input-output examples in the prompt to teach the model the desired format or reasoning style before asking the actual question.</p>
+</blockquote>
+<h3>S_Q15: What is Chain-of-Thought (CoT) Prompting?</h3>
+<blockquote>
+<p>Chain-of-Thought prompts the model to break down complex reasoning by explicitly stating: <em>"Think step-by-step before answering."</em> Generating intermediate steps significantly boosts accuracy on math, logic, and multi-hop questions.</p>
+</blockquote>
+<h3>S_Q16: What is a Hallucination and how do you stop it?</h3>
+<blockquote>
+<p>A hallucination is when an LLM produces an answer that sounds completely confident and fluent but is factually incorrect. We stop it using RAG with strict grounding prompts, lower temperature (<code>0.0</code>), and verification/critic guardrail agents.</p>
+</blockquote>
+<h3>S_Q17: What is the difference between Fine-Tuning and RAG?</h3>
+<blockquote>
+<p>RAG provides external knowledge at runtime without modifying model weights (fast, cheap, easily updated). Fine-tuning permanently updates the model's internal weights on specialized datasets to teach it a specific tone, format, or task syntax.</p>
+</blockquote>
+<h3>S_Q18: What is a Transformer in simple terms?</h3>
+<blockquote>
+<p>The Transformer is the neural network architecture behind all modern LLMs. Its breakthrough innovation is the <strong>Self-Attention mechanism</strong>, which allows the model to process all words in a sentence simultaneously and calculate how much each word relates to every other word.</p>
+</blockquote>
+<h3>S_Q19: What is Softmax?</h3>
+<blockquote>
+<p>Softmax is an activation function that converts a vector of raw numbers (logits) into a probability distribution between 0 and 1 that sums up to 1.0. The highest probability represents the model's top prediction.</p>
+</blockquote>
+<h3>S_Q20: What is LangChain?</h3>
+<blockquote>
+<p>LangChain is an open-source framework that helps developers build LLM applications by providing pre-built modules for prompt templates, document loaders, vector stores, and chains connecting LLMs to external APIs.</p>
+</blockquote>
+<h3>S_Q21: What is LangGraph?</h3>
+<blockquote>
+<p>LangGraph is an extension of LangChain designed for multi-agent workflows. It allows developers to build stateful, cyclic graphs where agents can loop back, retry failed steps, and maintain persistent state across multi-turn interactions.</p>
+</blockquote>
+<h3>S_Q22: What is a Loss Function?</h3>
+<blockquote>
+<p>A loss function measures the difference between the model's prediction and the actual true answer. During training, backpropagation uses this loss to calculate gradients and adjust weights so the loss decreases over time.</p>
+</blockquote>
+<h3>S_Q23: What is an Epoch and Batch Size?</h3>
+<blockquote>
+<p>An <strong>Epoch</strong> is one complete pass of the entire training dataset through the neural network. <strong>Batch Size</strong> is the number of training examples processed together in one forward and backward pass before updating weights.</p>
+</blockquote>
+<h3>S_Q24: What is Classification vs Regression?</h3>
+<blockquote>
+<p>Classification predicts a discrete category or class label (e.g., "Spam vs Not Spam", "Low vs High Risk"). Regression predicts a continuous numerical value (e.g., predicting house prices or temperature).</p>
+</blockquote>
+<h3>S_Q25: What is RLHF (Reinforcement Learning from Human Feedback)?</h3>
+<blockquote>
+<p>RLHF is the alignment process that turns a raw base model into a helpful chatbot. Human evaluators rank multiple model responses, a reward model learns these preferences, and reinforcement learning (PPO) tunes the LLM to maximize the reward.</p>
+</blockquote>
+<hr />
+<h1>🏛️ PART 2: 50 IN-DEPTH &amp; ARCHITECTURAL AI QUESTIONS</h1>
+<hr />
+<h1>SECTION 1: LangGraph &amp; Multi-Agent Architectures (10 Questions)</h1>
+<h3>Q1: What is a Cyclic State Graph in LangGraph, and why is it superior to linear chains?</h3>
+<blockquote>
+<p>Standard LangChain chains execute Directed Acyclic Graphs (DAGs) where execution flows in one direction: $A \rightarrow B \rightarrow C$. A Cyclic State Graph allows conditional edges to point backward ($A \rightarrow B \rightarrow A$), enabling feedback loops. This is essential for agent self-correction: an agent generates a response, a critic audits it, and if it fails validation, the graph loops back with error context rather than returning incorrect output to the user.</p>
+</blockquote>
+<h3>Q2: How does state management work in LangGraph? What is a Reducer?</h3>
+<blockquote>
+<p>State is represented as a shared schema (typically a Python <code>TypedDict</code> or Pydantic model). Every node is a Python function that takes the current state and returns a dictionary of updates. A <strong>Reducer</strong> defines how updates to a specific state key are merged. For example, <code>Annotated[list, add_messages]</code> tells LangGraph to <em>append</em> new messages to the history rather than overwriting the entire list.</p>
+</blockquote>
+<h3>Q3: In your Medical project, how did you implement parallel "Map-Reduce" inference?</h3>
+<blockquote>
+<p>Diagnosis (Pathology) and Treatment (Pharmacology) can be evaluated simultaneously on the same patient history. In LangGraph, I branched execution from the triage node to run both <code>Dr. Diagnosis</code> and <code>Dr. Treatment</code> asynchronously in parallel (the "Map" step). Once both returned their outputs, an aggregator node merged their independent analyses into a unified clinical brief (the "Reduce" step), reducing inference latency by ~40%.</p>
+</blockquote>
+<h3>Q4: Explain the architecture of the "Skeptic" Agent guardrail on your resume.</h3>
+<blockquote>
+<p>The Skeptic is a validator node placed between the clinical synthesis and the final output. It takes the proposed treatment plan and audits it against the patient's medical history (e.g., checking drug contraindications like prescribing NSAIDs/Aspirin to a patient with active peptic ulcers). If a conflict is found, a conditional edge routes back to the pharmacology node with an explicit warning note for correction. If safe, it routes to <code>END</code>.</p>
+</blockquote>
+<h3>Q5: How did you implement the "Self-Healing" execution engine in Aura?</h3>
+<blockquote>
+<p>When a sub-agent executes a shell/CLI command via Python's <code>subprocess</code>, I capture <code>stdout</code>, <code>stderr</code>, and the <code>returncode</code>. If <code>returncode != 0</code>, execution routes to a Diagnoser node. The LLM receives the failing command, system context, and raw <code>stderr</code> trace. It diagnoses the issue (e.g., missing dependency, incorrect flag), generates a remediation command, and loops back to the executor, capped at 3 retries to prevent infinite loops.</p>
+</blockquote>
+<h3>Q6: What is a Supervisor Agent and how does it coordinate sub-agents?</h3>
+<blockquote>
+<p>A Supervisor is an orchestration LLM node whose output is a tool call or routing decision. Given a user goal, it evaluates which specialized sub-agent (SysAdmin, Coding, Web Operator) is qualified to take the next step. It passes state to that sub-agent, awaits its response, and decides whether the overall goal is satisfied or if another sub-agent must be invoked.</p>
+</blockquote>
+<h3>Q7: What are LangGraph Checkpointers and why are they used?</h3>
+<blockquote>
+<p>Checkpointers persist the state of the graph at every step to a storage backend (in-memory, SQLite, or PostgreSQL). This enables:
+1. Multi-turn conversational memory across independent API requests.
+2. Human-in-the-Loop interruption (pausing execution for human approval and resuming from the exact checkpoint).
+3. Time-travel debugging (rewinding to a previous state and replaying execution).</p>
+</blockquote>
+<h3>Q8: What is "State Cross-Pollination" mentioned in your Aura project?</h3>
+<blockquote>
+<p>In multi-agent systems, agents often work in silos. State cross-pollination means the outputs and tool findings from one sub-agent (e.g., the Web Operator finding an API documentation URL) are saved into the global shared graph state so the Coding agent can immediately use that context without having to perform redundant lookups.</p>
+</blockquote>
+<h3>Q9: How do you prevent infinite loops in cyclic agent graphs?</h3>
+<blockquote>
+<p>Two mechanisms:
+1. <strong>Recursion limit:</strong> LangGraph has a built-in <code>recursion_limit</code> parameter in <code>.invoke(config={"recursion_limit": 10})</code> that automatically halts execution if steps exceed the threshold.
+2. <strong>State counter:</strong> Tracking an <code>attempts: int</code> counter in the state object. The routing condition checks <code>if state["attempts"] &gt;= max_retries: return "fallback_node"</code>.</p>
+</blockquote>
+<h3>Q10: What is the difference between LangGraph, AutoGen, and CrewAI?</h3>
+<blockquote>
+<p>AutoGen focuses on conversational multi-agent chats between agents. CrewAI uses role-based, sequential, or hierarchical task lists. LangGraph is lower-level: it gives you granular, deterministic control over the exact execution graph, state transitions, cycles, and checkpoints. For production software where you need predictable state machines, LangGraph is the industry standard.</p>
+</blockquote>
+<hr />
+<h1>SECTION 2: LangChain, RAG &amp; Vector Databases (10 Questions)</h1>
+<h3>Q11: Walk me through an end-to-end RAG pipeline.</h3>
+<blockquote>
+<ol>
+<li><strong>Ingestion:</strong> Documents (PDFs, Markdown, text) are loaded via document loaders.</li>
+<li><strong>Chunking:</strong> Text is split into overlapping passages using recursive chunkers.</li>
+<li><strong>Embedding:</strong> An embedding model converts text chunks into dense floating-point vectors.</li>
+<li><strong>Storage:</strong> Vectors and metadata are indexed in a vector database (ChromaDB).</li>
+<li><strong>Retrieval:</strong> User query is embedded, and vector similarity search (cosine/ANN) retrieves top-$k$ relevant chunks.</li>
+<li><strong>Generation:</strong> Retrieved context + system prompt + user question are sent to the LLM to generate an answer grounded in the retrieved text.</li>
+</ol>
+</blockquote>
+<h3>Q12: Why is chunk overlap necessary in text splitting?</h3>
+<blockquote>
+<p>Natural language context does not end neatly at arbitrary character boundaries. If an important fact or sentence is split across two chunks without overlap, the semantic meaning in both chunks is degraded, and neither chunk may have a high enough cosine similarity score during retrieval. Overlap (typically 10-20% of chunk size) ensures continuity across boundaries.</p>
+</blockquote>
+<h3>Q13: What distance metrics are used in vector search, and when do you use each?</h3>
+<blockquote>
+<ol>
+<li><strong>Cosine Similarity:</strong> Measures the angle between vectors, ignoring magnitude. Best for text embeddings where document length varies.</li>
+<li><strong>Euclidean Distance ($L2$):</strong> Measures straight-line distance. Sensitive to vector magnitude.</li>
+<li><strong>Dot Product:</strong> Product of magnitudes and cosine angle. Best when embeddings are already normalized to unit length ($1.0$), as it is computationally faster than cosine.</li>
+</ol>
+</blockquote>
+<h3>Q14: What is the difference between Dense Retrieval and Sparse Retrieval?</h3>
+<blockquote>
+<p><strong>Sparse Retrieval (e.g., BM25, TF-IDF):</strong> Matches exact keyword frequencies. Great for specific entities, part numbers, or exact codes, but fails at understanding synonyms.
+<strong>Dense Retrieval (Embeddings):</strong> Captures semantic meaning and concepts even with zero matching keywords.
+<strong>Hybrid Search:</strong> Combines BM25 and dense embeddings with Reciprocal Rank Fusion (RRF) for the best of both worlds.</p>
+</blockquote>
+<h3>Q15: What is Re-ranking in advanced RAG pipelines?</h3>
+<blockquote>
+<p>First-stage retrieval pulls a larger pool of candidates (e.g., top-25 chunks) using fast bi-encoder embeddings. Then, a cross-encoder Re-ranker (like Cohere Rerank or BGE-Reranker) processes the query and each chunk together through full transformer cross-attention, scoring their true semantic relevance. The top-3 highest-scoring chunks are passed to the LLM. This drastically reduces noise.</p>
+</blockquote>
+<h3>Q16: What is HyDE (Hypothetical Document Embeddings)?</h3>
+<blockquote>
+<p>When user queries are very short (e.g., "fast response time"), their embedding may not match the dense paragraphs in documentation. HyDE instructs an LLM to generate a hypothetical answer first. Even if factually inaccurate, this hypothetical document shares the vocabulary and structure of real documents. Searching with the <em>hypothetical answer's vector</em> yields significantly higher retrieval accuracy.</p>
+</blockquote>
+<h3>Q17: How does ChromaDB handle metadata filtering?</h3>
+<blockquote>
+<p>ChromaDB allows attaching a key-value dictionary to each document embedding (e.g., <code>{"department": "cardiology", "source": "guidelines.pdf"}</code>). During a query, you can pass a <code>where</code> clause: <code>collection.query(..., where={"department": "cardiology"})</code>. This filters the search space before or during vector comparison, preventing irrelevant domain chunks from contaminating results.</p>
+</blockquote>
+<h3>Q18: What is the Context-Aware Tier-1 Router on your resume?</h3>
+<blockquote>
+<p>Not all user queries require heavy RAG retrieval or deep agent reasoning. A Tier-1 Router inspects the user query: simple conversational queries ("Hello", "Who are you?") are routed to a fast, low-cost linear path with no retrieval. Complex, domain-specific, or high-risk medical questions are routed to the multi-agent RAG loop. This saves latency and API costs.</p>
+</blockquote>
+<h3>Q19: What causes Hallucinations in RAG, and how do you mitigate them?</h3>
+<blockquote>
+<p>Causes: Irrelevant context retrieved, conflicting chunks, or prompt phrasing that allows the LLM to rely on pre-trained knowledge.
+Mitigation:
+1. Strict system prompting: <em>"Answer ONLY using the provided context. If not present, state that you do not know."</em>
+2. High retrieval threshold: Drop chunks below a similarity score.
+3. Grounding / Fact-checking: Secondary LLM pass verifying every claim against retrieved text.</p>
+</blockquote>
+<h3>Q20: When would you use RAG vs Fine-Tuning?</h3>
+<blockquote>
+<ul>
+<li><strong>Use RAG when:</strong> Information changes frequently, you need exact citations/sources, you have budget/hardware constraints, or you want to eliminate hallucinations on proprietary data.</li>
+<li><strong>Use Fine-Tuning when:</strong> You need to change the model's <em>behavior, style, tone, or syntax</em> (e.g., outputting custom JSON, medical terminology style, or 3D prompt expansions), or teaching a small model a specific skill without bloating the context window.</li>
+</ul>
+</blockquote>
+<hr />
+<h1>SECTION 3: PEFT, LoRA &amp; LLM Fine-Tuning (10 Questions)</h1>
+<h3>Q21: What is Parameter-Efficient Fine-Tuning (PEFT)?</h3>
+<blockquote>
+<p>Full fine-tuning updates all billions of parameters in an LLM, requiring massive GPU VRAM (for weights, gradients, and optimizer states like Adam). PEFT techniques freeze the pre-trained model weights and only train a tiny fraction of parameters (typically &lt; 1%), achieving comparable task performance with dramatically lower compute and memory.</p>
+</blockquote>
+<h3>Q22: Explain how LoRA (Low-Rank Adaptation) works mathematically.</h3>
+<blockquote>
+<p>For a pre-trained weight matrix $W_0 \in \mathbb{R}^{d \times k}$, LoRA freezes $W_0$ and represents its weight update $\Delta W$ as the product of two low-rank matrices:
+$$\Delta W = B \times A$$
+where $A \in \mathbb{R}^{r \times k}$ and $B \in \mathbb{R}^{d \times r}$, with rank $r \ll \min(d, k)$.
+The forward pass becomes:
+$$h = W_0 x + \frac{\alpha}{r} (B A) x$$
+Initializing $A$ with Gaussian noise and $B$ with zeros ensures $\Delta W = 0$ at the start of training.</p>
+</blockquote>
+<h3>Q23: What are Rank $r$ and Alpha $\alpha$ in LoRA?</h3>
+<blockquote>
+<ul>
+<li><strong>Rank ($r$):</strong> The inner dimension of matrices $A$ and $B$. Common values are 8, 16, or 32. Lower $r$ means fewer trainable parameters and faster training; higher $r$ allows learning more complex task representations.</li>
+<li><strong>Alpha ($\alpha$):</strong> A constant scaling hyperparameter. The updates are scaled by $\frac{\alpha}{r}$. A common heuristic is setting $\alpha = 2 \times r$. It controls how strongly the adapter weights influence the frozen base model.</li>
+</ul>
+</blockquote>
+<h3>Q24: What layers/modules do you typically apply LoRA to in Transformers?</h3>
+<blockquote>
+<p>Primarily the attention projection weights:
+* Query ($q_proj$) and Value ($v_proj$) projections are the most common minimum setup.
+* Modern best practice (like QLoRA) targets all linear projection layers: $q_proj$, $k_proj$, $v_proj$, $o_proj$, as well as MLP gate and up/down projection layers ($gate_proj$, $up_proj$, $down_proj$) for better convergence.</p>
+</blockquote>
+<h3>Q25: In your PolyForge project, why did you fine-tune Qwen instead of prompt engineering?</h3>
+<blockquote>
+<p>Prompt engineering on every incoming request increases prompt token count, latency, and inference cost. By fine-tuning a small local Qwen model using LoRA on custom pairs of terse prompts mapped to rich 3D-geometric descriptors, the model internalized the domain grammar. It could expand inputs in single-digit milliseconds locally with zero API cost and 100% consistency.</p>
+</blockquote>
+<h3>Q26: What is QLoRA and how does it differ from standard LoRA?</h3>
+<blockquote>
+<p>QLoRA (Quantized Low-Rank Adaptation) quantizes the frozen base model weights down to <strong>4-bit NormalFloat (NF4)</strong> precision while keeping the trainable LoRA adapter weights in 16-bit BrainFloat (BF16). It also uses Double Quantization and Paged Optimizers to prevent memory spikes. This enables fine-tuning a 70B model on a single 48GB GPU or a 7B model on a consumer 16GB GPU.</p>
+</blockquote>
+<h3>Q27: What is Catastrophic Forgetting and how does LoRA prevent it?</h3>
+<blockquote>
+<p>Catastrophic forgetting occurs when a neural network fine-tuned on a new task overwrites its previously learned general knowledge. Because LoRA freezes the original pre-trained weights $W_0$ completely and only updates adapter matrices, the base model's reasoning capabilities are preserved. Furthermore, adapters can be swapped or disabled at runtime.</p>
+</blockquote>
+<h3>Q28: How do you merge LoRA weights back into the base model for inference?</h3>
+<blockquote>
+<p>Using the PEFT library method <code>model = model.merge_and_unload()</code>.
+It adds the computed product $\frac{\alpha}{r}(B \times A)$ directly to the base weights $W_0$. Once merged, the model has the exact same architecture and inference latency as the base model, with zero added compute overhead from adapter branches.</p>
+</blockquote>
+<h3>Q29: What is the difference between SFT (Supervised Fine-Tuning) and DPO (Direct Preference Optimization)?</h3>
+<blockquote>
+<ul>
+<li><strong>SFT:</strong> Trains the model on prompt-response pairs using cross-entropy loss to predict the next token (teaching the model what to say).</li>
+<li><strong>DPO:</strong> Aligns the model using pairs of (prompt, chosen response, rejected response). It optimizes the policy directly against human preferences without needing a separate reward model (unlike RLHF).</li>
+</ul>
+</blockquote>
+<h3>Q30: How do you format training data for Chat / Instruction models?</h3>
+<blockquote>
+<p>Using standardized chat templates (like ChatML or Llama-3 formatting).
+Each training example is structured with roles:
+<code>&lt;|im_start|&gt;system\n...&lt;|im_end|&gt;\n&lt;|im_start|&gt;user\n...&lt;|im_end|&gt;\n&lt;|im_start|&gt;assistant\n...&lt;|im_end|&gt;</code>.
+During loss computation, a label mask is applied so loss is only calculated on the assistant's tokens, not the prompt.</p>
+</blockquote>
+<hr />
+<h1>SECTION 4: Deep Learning, Transformers &amp; PyTorch (10 Questions)</h1>
+<h3>Q31: How does the Self-Attention mechanism work in Transformers?</h3>
+<blockquote>
+<p>For each token input vector, the model projects it into three vectors: Query ($Q$), Key ($K$), and Value ($V$).
+1. Compute dot product between Query and all Keys: $Q K^T$.
+2. Scale by $\sqrt{d_k}$ (prevents gradients from vanishing in softmax).
+3. Apply Softmax to get attention weights (probabilities of how much each word attends to every other word).
+4. Multiply attention weights by Values ($V$):
+$$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{Q K^T}{\sqrt{d_k}}\right) V$$</p>
+</blockquote>
+<h3>Q32: Why do we divide by $\sqrt{d_k}$ in Scaled Dot-Product Attention?</h3>
+<blockquote>
+<p>For large projection dimensions $d_k$, the dot products grow large in magnitude, pushing the softmax function into regions with extremely small gradients (gradient saturation). Scaling by $\frac{1}{\sqrt{d_k}}$ keeps the variance of the dot products at $1.0$, ensuring stable gradient flow during backpropagation.</p>
+</blockquote>
+<h3>Q33: What is the difference between Encoder-only, Decoder-only, and Encoder-Decoder architectures?</h3>
+<blockquote>
+<ul>
+<li><strong>Encoder-only (e.g., BERT):</strong> Bidirectional self-attention. Excellent for text classification, embedding generation, and extraction.</li>
+<li><strong>Decoder-only (e.g., GPT, Llama, Qwen):</strong> Causal (masked) self-attention; tokens can only attend to previous tokens. Standard for generative AI and autoregressive text generation.</li>
+<li><strong>Encoder-Decoder (e.g., T5):</strong> Encodes input bidirectionally, then decodes output autoregressively. Used for translation and summarization.</li>
+</ul>
+</blockquote>
+<h3>Q34: What is the KV Cache in Transformer inference?</h3>
+<blockquote>
+<p>In autoregressive generation, generating each new token re-computes Key and Value vectors for all preceding tokens. The KV Cache stores the previously calculated Key and Value matrices in GPU memory so only the single new token's $Q, K, V$ are computed at each step. This converts generation time complexity from $O(N^2)$ to $O(N)$.</p>
+</blockquote>
+<h3>Q35: Explain the difference between Adam, AdamW, and SGD.</h3>
+<blockquote>
+<ul>
+<li><strong>SGD:</strong> Updates weights in the negative gradient direction with a constant learning rate. Can get stuck in saddle points.</li>
+<li><strong>Adam:</strong> Adapts learning rates per-parameter using running estimates of the first moment (mean) and second moment (uncentered variance) of gradients.</li>
+<li><strong>AdamW:</strong> Fixes how weight decay ($L2$ regularization) is applied in Adam. Standard Adam adds weight decay to gradients before updating moments; AdamW decouples weight decay and applies it directly to weights, leading to significantly better generalization in Transformers.</li>
+</ul>
+</blockquote>
+<h3>Q36: What is Gradient Accumulation in PyTorch and when do you use it?</h3>
+<blockquote>
+<p>When a GPU does not have enough VRAM to hold a desired effective batch size (e.g., batch size 32 causes OOM), gradient accumulation splits it into smaller micro-batches (e.g., batch size 4). You run forward and backward passes for 8 micro-batches without zeroing gradients (<code>optimizer.zero_grad()</code>), and call <code>optimizer.step()</code> only after accumulating gradients across all 8 steps.</p>
+</blockquote>
+<h3>Q37: What is Mixed Precision Training (FP16 / BF16)?</h3>
+<blockquote>
+<p>Instead of storing all weights and activations in 32-bit floats (FP32), mixed precision stores activations and forward/backward passes in 16-bit (FP16 or BF16) while keeping a master copy of weights in FP32. This cuts VRAM usage by ~50% and speeds up matrix multiplications on Tensor Cores. BF16 has the same dynamic range as FP32, eliminating the loss scaling required by FP16.</p>
+</blockquote>
+<h3>Q38: What is Cross-Entropy Loss and how does PyTorch implement it?</h3>
+<blockquote>
+<p>Cross-entropy measures the performance of a classification model whose output is a probability value between 0 and 1. In PyTorch, <code>nn.CrossEntropyLoss()</code> combines <code>nn.LogSoftmax()</code> and <code>nn.NLLLoss()</code> in a single mathematically stable class. You pass raw unnormalized logits directly from the model, not probabilities.</p>
+</blockquote>
+<h3>Q39: What is Overfitting and what regularizations do you use in Deep Learning?</h3>
+<blockquote>
+<p>Overfitting is when a model learns noise and specifics of training data, failing on unseen test data (high variance).
+Techniques:
+1. <strong>Dropout:</strong> Randomly dropping neurons during training.
+2. <strong>Weight Decay ($L2$ regularization):</strong> Penalizing large weights.
+3. <strong>Early Stopping:</strong> Halting training when validation loss starts increasing.
+4. <strong>Data Augmentation:</strong> Artificially expanding training data diversity.</p>
+</blockquote>
+<h3>Q40: What are Positional Embeddings and why does a Transformer need them?</h3>
+<blockquote>
+<p>Self-attention is permutation-invariant: it treats tokens as an unordered bag of words. To give the model awareness of sequence order, positional information must be added. Modern models (like Llama and Qwen) use <strong>RoPE (Rotary Position Embeddings)</strong>, which encodes position by rotating the Query and Key vectors in the complex plane, allowing models to generalize to longer context windows gracefully.</p>
+</blockquote>
+<hr />
+<h1>SECTION 5: TinyML, Embedded AI &amp; Optimization (5 Questions)</h1>
+<h3>Q41: What is TinyML and why is it important for IoT devices like ESP32?</h3>
+<blockquote>
+<p>TinyML is deploying machine learning models on resource-constrained microcontrollers (MCUs) with micro-watt power consumption.
+Advantages:
+1. <strong>Zero network latency:</strong> Sub-20ms local processing vs hundreds of milliseconds over cloud networks.
+2. <strong>Privacy:</strong> Sensor telemetry never leaves the device.
+3. <strong>Reliability:</strong> Functions without internet/WiFi.
+4. <strong>Power efficiency:</strong> Eliminates energy-expensive radio transmissions.</p>
+</blockquote>
+<h3>Q42: What is Post-Training Quantization (PTQ) down to INT8?</h3>
+<blockquote>
+<p>PTQ maps 32-bit floating-point weights and activations to 8-bit integers ($[-128, 127]$):
+$$q = \text{round}\left(\frac{r}{S}\right) + Z$$
+where $S$ is the scale factor and $Z$ is the zero-point. This reduces model footprint by 75% (from 4 bytes to 1 byte per parameter) and allows running integer-only arithmetic, which is dramatically faster on microcontrollers that lack a Floating Point Unit (FPU).</p>
+</blockquote>
+<h3>Q43: How does the TFLite Micro memory architecture work on an ESP32?</h3>
+<blockquote>
+<p>Microcontrollers cannot use dynamic memory allocation (<code>malloc</code>/<code>free</code>) because heap fragmentation causes crashes in embedded systems. TFLite Micro uses a single statically pre-allocated memory chunk called a <strong>Tensor Arena</strong> (e.g., <code>uint8_t tensor_arena[kTensorArenaSize]</code>). The interpreter maps model tensors, intermediate activation buffers, and scratchpad memory within this single arena at initialization time.</p>
+</blockquote>
+<h3>Q44: What is the processing pipeline in your Gestura wearable gesture controller?</h3>
+<blockquote>
+<ol>
+<li><strong>Sampling:</strong> MPU6050 6-axis IMU reads 3-axis accelerometer and 3-axis gyroscope data at 50Hz (every 20ms) over the I2C bus.</li>
+<li><strong>Pre-processing:</strong> Raw integer readings are normalized to unit variance. A sliding window of 20 consecutive readings (representing a 400ms gesture window) forms a tensor.</li>
+<li><strong>Inference:</strong> The quantized INT8 TFLite model processes the window in &lt; 20ms.</li>
+<li><strong>Debounce &amp; Action:</strong> Softmax output above a 90% confidence threshold triggers smart home commands over BLE.</li>
+</ol>
+</blockquote>
+<h3>Q45: How do you prevent overfitting on small sensor datasets in TinyML?</h3>
+<blockquote>
+<p>Sensor data is prone to sensor drift and user variations. Mitigations include:
+1. Heavy data augmentation: Adding Gaussian jitter, time-warping, and scaling to IMU accelerometer signals.
+2. Keeping architectures compact (e.g., 2-3 dense layers or 1D Conv layers).
+3. Quantization itself acts as a regularizer by eliminating high-precision weight noise.</p>
+</blockquote>
+<hr />
+<h1>SECTION 6: LLMOps, Infrastructure &amp; Production AI (5 Questions)</h1>
+<h3>Q46: How did you prevent CUDA Out-of-Memory (OOM) errors in PolyForge?</h3>
+<blockquote>
+<p>Running heavy local text-to-3D generation models (Hunyuan3D) consumes significant VRAM. If multiple API requests hit the GPU concurrently, CUDA triggers an unrecoverable OOM crash.
+Solution: I decoupled the FastAPI web server from GPU execution using Celery and Redis. Celery workers assigned to the GPU queue run with <code>--concurrency=1</code>, guaranteeing that only one generation task runs on the GPU at any millisecond. Additional requests wait safely in the Redis queue.</p>
+</blockquote>
+<h3>Q47: What is LangSmith and how is it used in LLMOps?</h3>
+<blockquote>
+<p>LangSmith is an observability and tracing platform for LLM applications. It traces every step in an agent execution: exact prompts sent, raw responses received, latency per node, token counts, tool call arguments, and error traces. It allows visualizing the full LangGraph execution graph in production and running automated benchmark evaluations against test sets.</p>
+</blockquote>
+<h3>Q48: What is Model Context Protocol (MCP) and why is it a game-changer?</h3>
+<blockquote>
+<p>Open-sourced by Anthropic, MCP provides a universal, standardized protocol (over JSON-RPC via stdio or HTTP/SSE) for LLMs to communicate with tools, databases, and environments. Instead of developers writing custom integration code for every tool, MCP standardizes:
+1. <strong>Tools:</strong> Dynamic discovery of executable functions.
+2. <strong>Resources:</strong> Read-only access to files and databases.
+3. <strong>Prompts:</strong> Reusable templates.
+It creates a decoupled ecosystem where an AI agent can plug into any MCP server.</p>
+</blockquote>
+<h3>Q49: What is Time to First Token (TTFT) vs Inter-Token Latency (ITL)?</h3>
+<blockquote>
+<ul>
+<li><strong>TTFT:</strong> The time elapsed from when the user submits a prompt until the first token streams back. It is dominated by prompt processing (prefill) and RAG retrieval.</li>
+<li><strong>ITL:</strong> The average time between each subsequent generated token during streaming.
+In our hackathon project, using Groq LPUs reduced TTFT to ~200ms, making WhatsApp chat interactions feel instantaneous.</li>
+</ul>
+</blockquote>
+<h3>Q50: How do you evaluate whether a RAG system is actually performing well?</h3>
+<blockquote>
+<p>Using the <strong>RAG Triad</strong> framework:
+1. <strong>Context Relevance:</strong> Are the retrieved chunks relevant to the user's question? (Evaluated by computing semantic similarity between query and retrieved chunks).
+2. <strong>Groundedness / Faithfulness:</strong> Is the LLM's answer derived <em>strictly</em> from the retrieved context, or is it hallucinating?
+3. <strong>Answer Relevance:</strong> Does the final answer directly address the user's initial question?</p>
+</blockquote>
+<hr />
+<h1>💻 HANDS-ON CODING PRACTICE FOR AI (The 5 Most Likely Live Tasks)</h1>
+<hr />
+<h3>Challenge 1: Build a LangGraph Cyclic Agent with a Reviewer Loop</h3>
+<p><em>Scenario: Build an agent where a <code>generator</code> writes text, a <code>reviewer</code> checks length. If &lt; 10 words, it loops back; otherwise ends.</em></p>
+<pre><code class="language-python">from typing import TypedDict
+from langgraph.graph import StateGraph, END
+
+# 1. State Schema
+class AgentState(TypedDict):
+    task: str
+    draft: str
+    iterations: int
+
+# 2. Generator Node
+def generator_node(state: AgentState) -&gt; dict:
+    current_iter = state.get(&quot;iterations&quot;, 0) + 1
+    # Simulates improving output on retries
+    new_draft = f&quot;Detailed solution for {state['task']} with comprehensive architecture&quot; * current_iter
+    return {&quot;draft&quot;: new_draft, &quot;iterations&quot;: current_iter}
+
+# 3. Conditional Routing Function (Reviewer)
+def should_continue(state: AgentState) -&gt; str:
+    word_count = len(state[&quot;draft&quot;].split())
+    if word_count &gt;= 10 or state[&quot;iterations&quot;] &gt;= 3:
+        return &quot;approve&quot;
+    return &quot;retry&quot;
+
+# 4. Construct Graph
+workflow = StateGraph(AgentState)
+workflow.add_node(&quot;generator&quot;, generator_node)
+workflow.set_entry_point(&quot;generator&quot;)
+
+workflow.add_conditional_edges(
+    &quot;generator&quot;,
+    should_continue,
+    {
+        &quot;approve&quot;: END,
+        &quot;retry&quot;: &quot;generator&quot;  # Loop back!
+    }
+)
+
+app = workflow.compile()
+output = app.invoke({&quot;task&quot;: &quot;deploy AI bot&quot;, &quot;draft&quot;: &quot;&quot;, &quot;iterations&quot;: 0})
+print(&quot;Final State:&quot;, output)
+</code></pre>
+<hr />
+<h3>Challenge 2: ChromaDB Retrieval with Metadata Filtering</h3>
+<p><em>Scenario: Store 3 documents in ChromaDB with metadata and query for only "medical" documents.</em></p>
+<pre><code class="language-python">import chromadb
+
+# In-memory client
+client = chromadb.Client()
+collection = client.create_collection(&quot;clinical_kb&quot;)
+
+# Ingest with metadata
+collection.add(
+    documents=[
+        &quot;Patient has history of peptic ulcer disease. Avoid NSAIDs.&quot;,
+        &quot;Server timeout caused by high concurrent database connections.&quot;,
+        &quot;Recommended dosage for Amoxicillin is 500mg three times daily.&quot;
+    ],
+    ids=[&quot;doc1&quot;, &quot;doc2&quot;, &quot;doc3&quot;],
+    metadatas=[
+        {&quot;domain&quot;: &quot;medical&quot;, &quot;severity&quot;: &quot;high&quot;},
+        {&quot;domain&quot;: &quot;infrastructure&quot;, &quot;severity&quot;: &quot;medium&quot;},
+        {&quot;domain&quot;: &quot;medical&quot;, &quot;severity&quot;: &quot;low&quot;}
+    ]
+)
+
+# Retrieve only medical domain
+results = collection.query(
+    query_texts=[&quot;What medication can I give for ulcer pain?&quot;],
+    n_results=1,
+    where={&quot;domain&quot;: &quot;medical&quot;}  # Metadata filter
+)
+
+print(&quot;Retrieved Document:&quot;, results[&quot;documents&quot;][0][0])
+print(&quot;Metadata:&quot;, results[&quot;metadatas&quot;][0][0])
+</code></pre>
+<hr />
+<h3>Challenge 3: Configure PEFT / LoRA for Qwen/Llama in Python</h3>
+<p><em>Scenario: Set up a LoRA configuration for causal language modeling targeting attention projections.</em></p>
+<pre><code class="language-python">from peft import LoraConfig, TaskType
+
+lora_config = LoraConfig(
+    task_type=TaskType.CAUSAL_LM,
+    r=16,                         # Rank dimension
+    lora_alpha=32,                # Scaling parameter (alpha = 2 * r)
+    lora_dropout=0.05,            # Dropout probability for LoRA layers
+    target_modules=[              # Target attention projections
+        &quot;q_proj&quot;,
+        &quot;k_proj&quot;,
+        &quot;v_proj&quot;,
+        &quot;o_proj&quot;
+    ],
+    bias=&quot;none&quot;
+)
+
+# How to attach to model in PyTorch:
+# from peft import get_peft_model
+# peft_model = get_peft_model(base_model, lora_config)
+# peft_model.print_trainable_parameters()
+</code></pre>
+<hr />
+<h3>Challenge 4: PyTorch Custom Neural Network with Forward Pass</h3>
+<p><em>Scenario: Write a clean PyTorch module with linear layers, ReLU, Dropout, and forward logic.</em></p>
+<pre><code class="language-python">import torch
+import torch.nn as nn
+
+class MedicalTriageClassifier(nn.Module):
+    def __init__(self, input_features: int = 128, num_classes: int = 3):
+        super().__init__()
+        self.network = nn.Sequential(
+            nn.Linear(input_features, 64),
+            nn.ReLU(),
+            nn.Dropout(p=0.2),
+            nn.Linear(64, num_classes)  # Logits output (Low, Medium, High risk)
+        )
+
+    def forward(self, x: torch.Tensor) -&gt; torch.Tensor:
+        return self.network(x)
+
+# Test forward pass with dummy tensor
+model = MedicalTriageClassifier()
+dummy_patient_vector = torch.randn(4, 128)  # Batch of 4
+logits = model(dummy_patient_vector)
+print(&quot;Logits shape:&quot;, logits.shape)  # torch.Size([4, 3])
+</code></pre>
+<hr />
+<h3>Challenge 5: LLM Token Streaming via FastAPI</h3>
+<p><em>Scenario: Create a FastAPI endpoint that streams LLM tokens chunk-by-chunk using an async generator.</em></p>
+<pre><code class="language-python">import asyncio
+from fastapi import FastAPI
+from fastapi.responses import StreamingResponse
+
+app = FastAPI()
+
+async def mock_llm_token_stream(prompt: str):
+    response_tokens = f&quot;Upteky AI response for prompt: {prompt} streaming in real-time.&quot;.split()
+    for token in response_tokens:
+        await asyncio.sleep(0.08)  # Simulates 80ms token generation
+        yield f&quot;{token} &quot;
+
+@app.post(&quot;/api/chat/stream&quot;)
+async def chat_stream(prompt: str):
+    return StreamingResponse(
+        mock_llm_token_stream(prompt),
+        media_type=&quot;text/plain&quot;
+    )
+</code></pre>
+<hr />
+<hr />
+<h1>⚡ 10 BITE-SIZED 5-MINUTE CODING CHALLENGES (Quick &amp; Simple)</h1>
+<blockquote>
+<p>In a 30-minute interview, coding is never longer than 5–10 lines. Here are the exact short snippets interviewers ask you to write live:</p>
+</blockquote>
+<hr />
+<h3>Challenge S1: Compute Cosine Similarity (NumPy / Python)</h3>
+<p><em>Prompt: "Write a function that calculates the cosine similarity between two 1D vectors."</em></p>
+<pre><code class="language-python">import numpy as np
+
+def cosine_similarity(v1, v2):
+    dot_product = np.dot(v1, v2)
+    norm_v1 = np.linalg.norm(v1)
+    norm_v2 = np.linalg.norm(v2)
+    return dot_product / (norm_v1 * norm_v2)
+
+# Quick Test
+a = np.array([1, 2, 3])
+b = np.array([1, 2, 4])
+print(&quot;Similarity:&quot;, cosine_similarity(a, b))  # ~0.99
+</code></pre>
+<hr />
+<h3>Challenge S2: Simple Tokenizer &amp; Word Frequency (NLP)</h3>
+<p><em>Prompt: "Write a function that takes a sentence, removes punctuation, lowercases it, and returns a dictionary of word counts."</em></p>
+<pre><code class="language-python">import string
+from collections import Counter
+
+def get_word_freq(text: str) -&gt; dict:
+    clean_text = text.lower().translate(str.maketrans(&quot;&quot;, &quot;&quot;, string.punctuation))
+    tokens = clean_text.split()
+    return dict(Counter(tokens))
+
+# Test
+print(get_word_freq(&quot;Upteky builds AI agents. AI is the future!&quot;))
+# {'upteky': 1, 'builds': 1, 'ai': 2, 'agents': 1, 'is': 1, 'the': 1, 'future': 1}
+</code></pre>
+<hr />
+<h3>Challenge S3: Softmax Function from Scratch (Deep Learning)</h3>
+<p><em>Prompt: "Write a numerically stable Softmax function in NumPy."</em></p>
+<pre><code class="language-python">import numpy as np
+
+def softmax(logits):
+    # Subtract max(logits) to prevent overflow in exp()
+    exp_logits = np.exp(logits - np.max(logits))
+    return exp_logits / np.sum(exp_logits)
+
+# Test
+print(&quot;Probabilities:&quot;, softmax([2.0, 1.0, 0.1]))  # Sums to 1.0
+</code></pre>
+<hr />
+<h3>Challenge S4: Sliding Window / Text Chunker (RAG)</h3>
+<p><em>Prompt: "Write a simple text chunker that splits a list of words into chunks of size K with overlap O."</em></p>
+<pre><code class="language-python">def chunk_words(words: list, chunk_size: int = 4, overlap: int = 1):
+    step = chunk_size - overlap
+    chunks = []
+    for i in range(0, len(words), step):
+        chunk = words[i:i + chunk_size]
+        if chunk:
+            chunks.append(chunk)
+    return chunks
+
+# Test
+tokens = [&quot;Patient&quot;, &quot;has&quot;, &quot;history&quot;, &quot;of&quot;, &quot;ulcers&quot;, &quot;avoid&quot;, &quot;aspirin&quot;, &quot;daily&quot;]
+print(chunk_words(tokens, chunk_size=4, overlap=1))
+</code></pre>
+<hr />
+<h3>Challenge S5: PyTorch GPU Check &amp; Tensor Multiplication</h3>
+<p><em>Prompt: "Create two random tensors, send them to GPU if available, and return their dot product."</em></p>
+<pre><code class="language-python">import torch
+
+device = &quot;cuda&quot; if torch.cuda.is_available() else &quot;cpu&quot;
+
+x = torch.randn(3, 3, device=device)
+y = torch.randn(3, 3, device=device)
+z = torch.matmul(x, y)
+
+print(f&quot;Device: {device} | Result shape: {z.shape}&quot;)
+</code></pre>
+<hr />
+<h3>Challenge S6: Basic FastAPI POST Route with Validation</h3>
+<p><em>Prompt: "Write a FastAPI route taking a JSON body with 'prompt' and returning its character count."</em></p>
+<pre><code class="language-python">from fastapi import FastAPI
+from pydantic import BaseModel, Field
+
+app = FastAPI()
+
+class PromptRequest(BaseModel):
+    prompt: str = Field(..., min_length=1)
+
+@app.post(&quot;/analyze&quot;)
+def analyze_prompt(body: PromptRequest):
+    return {&quot;length&quot;: len(body.prompt), &quot;uppercase&quot;: body.prompt.upper()}
+</code></pre>
+<hr />
+<h3>Challenge S7: Prompt Template Formatting (LangChain / Python)</h3>
+<p><em>Prompt: "Write a function that dynamically injects user role and domain context into an agent system prompt."</em></p>
+<pre><code class="language-python">def build_prompt(role: str, domain: str, user_query: str) -&gt; str:
+    template = f&quot;&quot;&quot;System: You are an expert {role} in the {domain} industry.
+Rules: Answer concisely. Do not hallucinate.
+
+User: {user_query}
+Assistant:&quot;&quot;&quot;
+    return template
+
+# Test
+print(build_prompt(&quot;Sales Qualifier&quot;, &quot;Real Estate&quot;, &quot;What is the price?&quot;))
+</code></pre>
+<hr />
+<h3>Challenge S8: JavaScript Filter &amp; Map (If Web / MERN tested)</h3>
+<p><em>Prompt: "Given an array of leads, filter those with score &gt;= 70 and return their names in uppercase."</em></p>
+<pre><code class="language-javascript">const leads = [
+  { name: &quot;Rahul&quot;, score: 85 },
+  { name: &quot;Amit&quot;, score: 50 },
+  { name: &quot;Pooja&quot;, score: 92 }
+];
+
+const qualified = leads
+  .filter(l =&gt; l.score &gt;= 70)
+  .map(l =&gt; l.name.toUpperCase());
+
+console.log(qualified); // [&quot;RAHUL&quot;, &quot;POOJA&quot;]
+</code></pre>
+<hr />
+<h3>Challenge S9: Mocking an Agent Tool with Python Decorator</h3>
+<p><em>Prompt: "Create a simple @tool decorator that registers functions into a tool dictionary."</em></p>
+<pre><code class="language-python">TOOL_REGISTRY = {}
+
+def tool(name: str):
+    def decorator(func):
+        TOOL_REGISTRY[name] = func
+        return func
+    return decorator
+
+@tool(&quot;calculator&quot;)
+def add(a, b):
+    return a + b
+
+# Invoking tool by name (how LangChain tools work)
+print(TOOL_REGISTRY[&quot;calculator&quot;](10, 20))  # 30
+</code></pre>
+<hr />
+<h3>Challenge S10: One-Line Reversing &amp; Palindrome Check</h3>
+<p><em>Prompt: "Check if a string is a palindrome ignoring casing and non-alphanumeric characters."</em></p>
+<pre><code class="language-python">def is_palindrome(text: str) -&gt; bool:
+    clean = &quot;&quot;.join(c.lower() for c in text if c.isalnum())
+    return clean == clean[::-1]
+
+print(is_palindrome(&quot;A man, a plan, a canal: Panama&quot;))  # True
+</code></pre>
+<hr />
+<blockquote>
+<p>[!TIP]
+<strong>Summary for Tomorrow:</strong>
+* You don't have to memorize every single line of code syntax.
+* If asked to code live in a 30-minute interview, it will be one of these simple 5-to-10 line checks (like S1 to S10).
+* Skim through these 50 answers and 10 snippets once — you already understand the concepts from your projects!</p>
+</blockquote>
+</body>
+</html>

@@ -1,0 +1,6 @@
+
+backend/.env
+backend/credentials.json
+backend/token.json.bak
+*.bak
+.env

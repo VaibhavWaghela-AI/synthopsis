@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-core: #F0EFE9;
+  --color-ink: #111216;
+  --color-ink-light: #2A2B32;
+  --color-accent-red: #FF3333;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+  --font-sans: "Space Grotesk", "Inter", sans-serif;
+  --font-display: "Syne", sans-serif;
+}
+
+@layer base {
+  :root {
+    --bg-core: #F0EFE9;
+    --ink: #111216;
+    --ink-light: #2A2B32;
+    --accent-red: #FF3333;
+    --border-strong: #111216;
+  }
+  
+  body {
+    @apply bg-[var(--ink)] text-[var(--ink)] font-sans m-0 p-3 md:p-6 min-h-screen;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+  .hud-wrapper {
+    @apply bg-[var(--bg-core)] relative flex-1 overflow-hidden rounded-[16px] md:rounded-[28px] border border-[var(--ink)];
+    background-image: url('/assets/textures/technical-grid.svg');
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.1), inset 0 0 0 1px var(--ink);
+  }
+  
+  .scanlines {
+    @apply absolute inset-0 pointer-events-none opacity-50 z-50;
+    background: linear-gradient(
+      to bottom,
+      rgba(255,255,255,0),
+      rgba(255,255,255,0) 50%,
+      rgba(0,0,0,0.02) 50%,
+      rgba(0,0,0,0.02)
+    );
+    background-size: 100% 4px;
+  }
+  
+  .glitch-hover {
+    @apply relative transition-all;
+  }
+  .glitch-hover:hover {
+    text-shadow: -2px 0 var(--accent-red), 2px 0 blue;
+  }
+  
+  .tech-border-b {
+    @apply border-b border-[var(--border-strong)];
+  }
+  .tech-border-r {
+    @apply border-r border-[var(--border-strong)];
+  }
+  .tech-border-t {
+    @apply border-t border-[var(--border-strong)];
+  }
+}
+
+/* Animations */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.anim-pulse {
+  animation: pulse-slow 2s infinite ease-in-out;
+}

@@ -1,0 +1,78 @@
+================================================================================
+APEXRIG GAMING TECHNOLOGIES — OFFICIAL PRODUCT CATALOG & PRICING (2026)
+Headquarters: SG Highway, Ahmedabad, Gujarat | Pan-India Insured Express Shipping
+Contact: support@apexrig.in | WhatsApp Operations: +91 87800 42609
+================================================================================
+
+1. PRE-BUILT FLAGSHIP GAMING RIGS (Turnkey Systems with 3-Year On-Site Warranty):
+
+• APEX TITAN X (The Ultimate 4K Ultra Rig) — Price: ₹3,45,000 (Incl. 18% GST)
+  - Processor: AMD Ryzen 9 7950X3D (16 Cores, 32 Threads, 144MB 3D V-Cache)
+  - GPU: ASUS ROG Strix GeForce RTX 4090 24GB GDDR6X OC Edition
+  - Cooler: Lian Li Galahad II LCD 360mm AIO Liquid Cooler
+  - Motherboard: ASUS ROG Strix X670E-E Gaming WiFi
+  - Memory: 64GB (2x32GB) Corsair Dominator Titanium DDR5 6000MHz CL30
+  - Storage: 2TB Samsung 990 PRO Gen4 NVMe SSD (7450 MB/s Read) + 4TB Seagate IronWolf
+  - Power Supply: Corsair RM1000x 1000W 80+ Gold Fully Modular ATX 3.0
+  - Cabinet: Lian Li O11 Dynamic EVO RGB (Black/White) with 6x ARGB PWM Fans
+  - Gaming Performance: Cyberpunk 2077 (4K Ray Tracing Overdrive: 110+ FPS with DLSS 3.5), GTA V (4K Ultra: 175+ FPS), Valorant (1440p: 650+ FPS)
+
+• APEX BEAST PRO (High-End 1440p / 4K Esports & Streaming) — Price: ₹2,15,000 (Incl. 18% GST)
+  - Processor: AMD Ryzen 7 7800X3D (8 Cores, 16 Threads — Best Gaming CPU)
+  - GPU: ZOTAC Gaming GeForce RTX 4080 Super Trinity Black Edition 16GB
+  - Cooler: DeepCool LS720 SE 360mm ARGB AIO
+  - Motherboard: MSI MAG B650 Tomahawk WiFi (AM5)
+  - Memory: 32GB (2x16GB) G.Skill Trident Z5 Neo RGB DDR5 6000MHz CL30
+  - Storage: 2TB Kingston KC3000 PCIe 4.0 NVMe SSD
+  - Power Supply: DeepCool PX850G 850W 80+ Gold PCIe 5.0 ATX 3.0
+  - Cabinet: NZXT H6 Flow Dual-Chamber Compact Panoramic Glass
+  - Gaming Performance: Modern Warfare III (1440p Ultra: 165+ FPS), Black Myth Wukong (1440p Cinematic: 95+ FPS)
+
+• APEX CHAMPION (Balanced 1440p Workhorse) — Price: ₹1,35,000 (Incl. 18% GST)
+  - Processor: AMD Ryzen 5 7600X (6 Cores, 12 Threads, 5.3 GHz Boost)
+  - GPU: Gigabyte GeForce RTX 4070 Super Windforce OC 12GB
+  - Cooler: DeepCool AG620 Dual Tower ARGB Air Cooler
+  - Motherboard: Gigabyte B650 Gaming X AX WiFi
+  - Memory: 32GB (2x16GB) Corsair Vengeance DDR5 5600MHz CL36
+  - Storage: 1TB Crucial T500 Gen4 NVMe SSD
+  - Power Supply: Cooler Master MWE 750W 80+ Gold V2
+  - Cabinet: Ant Esports 411 Air ARGB Mid-Tower
+
+• APEX ESPORTS STARTER (Budget 1080p Esports Build) — Price: ₹68,500 (Incl. 18% GST)
+  - Processor: Intel Core i5-13400F (10 Cores, 16 Threads)
+  - GPU: ASUS Dual GeForce RTX 4060 OC 8GB GDDR6
+  - Motherboard: MSI PRO B760M-A WiFi DDR4
+  - Memory: 16GB (2x8GB) Corsair Vengeance LPX DDR4 3200MHz
+  - Storage: 1TB Western Digital Blue SN580 Gen4 SSD
+  - Power Supply: DeepCool PK650D 650W 80+ Bronze
+  - Cabinet: DeepCool CC560 V2 High-Airflow Mid-Tower
+
+2. INDIVIDUAL COMPONENT PRICING & STOCK (October 2026):
+
+Graphics Cards (GPUs):
+- Nvidia RTX 4090 24GB (ASUS ROG / MSI Suprim): ₹1,85,000 (Stock: 4 units)
+- Nvidia RTX 4080 Super 16GB (ZOTAC / Gigabyte): ₹96,500 (Stock: 9 units)
+- Nvidia RTX 4070 Ti Super 16GB (MSI Gaming X Slim): ₹76,500 (Stock: 14 units)
+- Nvidia RTX 4070 Super 12GB (Inno3D / Gigabyte): ₹57,500 (Stock: 22 units)
+- Nvidia RTX 4060 Ti 16GB: ₹42,500 | RTX 4060 Ti 8GB: ₹36,500 | RTX 4060 8GB: ₹28,500
+- AMD Radeon RX 7800 XT 16GB (Sapphire Pulse): ₹49,000 (Stock: 8 units)
+
+Processors (CPUs):
+- AMD Ryzen 7 7800X3D: ₹38,500 (Hot Seller — In Stock)
+- AMD Ryzen 9 7950X3D: ₹54,000
+- AMD Ryzen 5 7600X: ₹19,500
+- Intel Core i9-14900K: ₹52,500
+- Intel Core i7-14700K: ₹37,500
+- Intel Core i5-14600K: ₹26,500
+
+Memory & Storage:
+- G.Skill Trident Z5 RGB 32GB (2x16GB) DDR5 6000MHz CL30: ₹11,200
+- Corsair Vengeance 32GB DDR5 5600MHz: ₹9,400
+- Samsung 990 Pro 2TB NVMe Gen4: ₹16,200
+- Western Digital Black SN850X 1TB Gen4: ₹8,400
+
+3. WARRANTY, TESTING & DISPATCH POLICIES:
+- Warranty: 3-Year door-step pickup and drop replacement warranty across 18,000+ Indian PIN codes.
+- Testing: Every custom rig undergoes 24-hour hardware burn-in, Cinebench R23 thermal check (max 78C under load), and FurMark GPU stress test before dispatch.
+- Delivery: 2-3 business days across major metros (Mumbai, Delhi, Bangalore, Hyderabad, Ahmedabad) via insured express air courier in heavy-duty wooden crates.
+- Payment Terms: UPI, Credit Cards, Net Banking, Zero-Cost EMI up to 12 months, and Corporate GST Invoice with 18% input credit claim.

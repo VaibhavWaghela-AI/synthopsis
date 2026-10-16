@@ -1,0 +1,29 @@
+# Synthopsis — Launch Share Copy
+
+## Short (X / LinkedIn / Hackathon Submission)
+Synthopsis turns unformatted B2B sales RFQs from WhatsApp and Email into validated ERP accounting vouchers in 376 milliseconds.
+
+The reinvention of business operations through AI agents as infrastructure:
+• Drag-and-drop Visual DAG with Blueprint pipeline styling
+• 500 tok/sec Groq LPU reasoning + DPDP Act 2023 compliance
+• Turnkey Tally Prime & SAP ERP voucher generation
+
+Try the live console: https://github.com/VaIbHaVui-code/add
+
+---
+
+## Long (Show HN / Devpost / Reddit r/SideProject)
+Title: Show HN: Synthopsis – Autonomous B2B Multi-Agent Orchestration with Visual DAGs & Tally Prime ERP Integration
+
+Traditional enterprise B2B sales inquiries take an average of 4 hours per inquiry: sales reps manually decipher informal WhatsApp messages or email PDFs, calculate pricing matrices, check credit terms, and re-type the voucher into Tally or SAP.
+
+We built Synthopsis to eliminate this bottleneck completely:
+
+1. Unified Omnichannel Ingestion: Captures RFQs across WhatsApp Cloud Webhooks, IMAP email streams, and web chats.
+2. Dual-Engine Intelligence: Combines ultra-low latency Groq LPU (Llama 3.3 70B @ 500 tok/s) for sub-second quote extraction with DeepSeek-R1 / Gemini for complex multi-tier margin validation.
+3. Visual Blueprint DAG: Interactive node-graph builder with real-time execution tracing, conditional deal-size routing, and human-in-the-loop escalation.
+4. Native Indian Enterprise ERP Integration: Directly generates verified XML vouchers ready for Tally Prime and SAP S/4HANA with full DPDP Act 2023 compliance.
+
+Stack: Next.js 16 (App Router, Tailwind, Lucide), FastAPI (Python 3.12, Uvicorn), Groq LPU SDK, ReactFlow DAG engine.
+
+Check out our demo and code: https://github.com/VaIbHaVui-code/add

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upteky Interview Questions - 75 Technical Questions</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 14mm 18mm 14mm;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1e293b;
+      line-height: 1.55;
+      font-size: 13px;
+      padding: 0;
+      margin: 0;
+    }
+    h1 {
+      color: #0f172a;
+      font-size: 18px;
+      border-bottom: 2px solid #3b82f6;
+      padding-bottom: 5px;
+      margin-top: 24px;
+      page-break-after: avoid;
+    }
+    h1:first-of-type {
+      margin-top: 0;
+    }
+    h3 {
+      color: #1d4ed8;
+      font-size: 14px;
+      margin-top: 12px;
+      margin-bottom: 4px;
+      page-break-after: avoid;
+    }
+    blockquote {
+      margin: 4px 0 12px 0;
+      padding: 7px 12px;
+      background: #f8fafc;
+      border-left: 3.5px solid #3b82f6;
+      color: #334155;
+      font-size: 12.5px;
+      border-radius: 0 5px 5px 0;
+      page-break-inside: avoid;
+    }
+    code {
+      background: #e2e8f0;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-family: Consolas, monospace;
+      font-size: 11.5px;
+      color: #b91c1c;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #cbd5e1;
+      margin: 16px 0;
+    }
+    .header-doc {
+      text-align: center;
+      border-bottom: 3px double #94a3b8;
+      padding-bottom: 10px;
+      margin-bottom: 18px;
+    }
+    .header-doc h2 {
+      margin: 0 0 4px 0;
+      color: #0f172a;
+      font-size: 20px;
+    }
+    .header-doc p {
+      margin: 0;
+      color: #64748b;
+      font-size: 12.5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header-doc">
+    <h2>🎯 Upteky Technical Interview Preparation</h2>
+    <p><b>Candidate:</b> Vaibhav Waghela • <b>Role:</b> Developer • 75 Verbal Q&As Across All 15 Resume Techs</p>
+  </div>
+  <h1>🎤 Interview Questions &amp; Answers — All 15 Topics (75 Questions)</h1>
+<blockquote>
+<p>These are <strong>verbal questions</strong> — practice saying the answers out loud.
+Each answer is 3-4 sentences max. Don't over-explain.</p>
+</blockquote>
+<hr />
+<h1>🐍 TOPIC 1: Python</h1>
+<h3>Q1: What is the difference between a list and a tuple?</h3>
+<blockquote>
+<p>List is mutable (can add/remove/change items), tuple is immutable (fixed after creation). Tuples are faster and use less memory, so they're good for fixed data like coordinates or config values. Tuples can also be used as dictionary keys because they're hashable, lists cannot.</p>
+</blockquote>
+<h3>Q2: What are <code>*args</code> and <code>**kwargs</code>?</h3>
+<blockquote>
+<p><code>*args</code> collects extra positional arguments into a tuple. <code>**kwargs</code> collects extra keyword arguments into a dictionary. They let you write flexible functions that accept any number of arguments — I use this pattern heavily when writing decorators and middleware wrappers.</p>
+</blockquote>
+<h3>Q3: What is a decorator and where have you used one?</h3>
+<blockquote>
+<p>A decorator is a function that wraps another function to add behavior without modifying the original code. It takes a function as input, defines a wrapper function inside, and returns the wrapper. In FastAPI, every route uses <code>@app.get()</code> or <code>@app.post()</code> which are decorators. I've also written custom decorators for logging execution time and retry logic.</p>
+</blockquote>
+<h3>Q4: Explain the difference between <code>==</code> and <code>is</code> in Python.</h3>
+<blockquote>
+<p><code>==</code> checks if two objects have the same <strong>value</strong>. <code>is</code> checks if they are the <strong>exact same object in memory</strong> (same reference). For example, two different lists with the same contents will return <code>True</code> for <code>==</code> but <code>False</code> for <code>is</code>. Use <code>is</code> mainly for checking <code>None</code>: <code>if x is None</code>.</p>
+</blockquote>
+<h3>Q5: What is the GIL and how does <code>asyncio</code> help?</h3>
+<blockquote>
+<p>The GIL (Global Interpreter Lock) prevents true multi-threaded parallelism in CPython — only one thread executes Python bytecode at a time. But <code>asyncio</code> solves the I/O bottleneck by using cooperative multitasking — while one task is waiting for a network response, another task runs. This is why FastAPI with <code>async def</code> can handle thousands of concurrent API requests efficiently without multi-threading.</p>
+</blockquote>
+<hr />
+<h1>⚡ TOPIC 2: FastAPI + Pydantic</h1>
+<h3>Q1: Why FastAPI over Flask or Django?</h3>
+<blockquote>
+<p>Three main reasons. First, FastAPI is async-native — it handles concurrent requests without blocking, which is critical for AI endpoints that call external APIs. Second, it auto-generates OpenAPI/Swagger documentation at <code>/docs</code>. Third, Pydantic integration gives automatic request validation and type safety — if a client sends invalid JSON, FastAPI returns a 422 error before my code even runs.</p>
+</blockquote>
+<h3>Q2: What is Pydantic and why is it important?</h3>
+<blockquote>
+<p>Pydantic is a data validation library that uses Python type hints. You define a model class with typed fields, and Pydantic automatically validates, coerces, and serializes incoming data. In FastAPI, every request body is a Pydantic model — this means I get input validation, clear error messages, and auto-generated API docs for free, without writing manual validation code.</p>
+</blockquote>
+<h3>Q3: What is dependency injection in FastAPI?</h3>
+<blockquote>
+<p>Dependency injection lets you define reusable functions that run before your route handler — like checking authentication, validating API keys, or connecting to a database. You declare them with <code>Depends()</code> in the route signature. FastAPI resolves the dependency chain automatically. This keeps route handlers clean and avoids duplicating auth/validation logic across every endpoint.</p>
+</blockquote>
+<h3>Q4: How does FastAPI handle streaming responses?</h3>
+<blockquote>
+<p>FastAPI provides <code>StreamingResponse</code> which accepts an async generator. Instead of building the entire response in memory and sending it at once, you <code>yield</code> chunks one at a time. This is exactly how LLM chat streaming works — each token is yielded as it's generated, and the client receives it in real-time without waiting for the full response. I used this in the hackathon for the Groq and Gemini chat endpoints.</p>
+</blockquote>
+<h3>Q5: What is the difference between ASGI and WSGI?</h3>
+<blockquote>
+<p>WSGI is the older synchronous standard — one request blocks the worker until it's done. Flask uses WSGI. ASGI is the async standard — it can handle WebSockets, long-polling, and thousands of concurrent connections without blocking. FastAPI runs on ASGI via Uvicorn, which is why it significantly outperforms Flask for I/O-heavy workloads like calling AI APIs.</p>
+</blockquote>
+<hr />
+<h1>📮 TOPIC 3: Celery + Redis</h1>
+<h3>Q1: What is Celery and why do you need it?</h3>
+<blockquote>
+<p>Celery is a distributed task queue that lets you offload heavy or long-running work to background workers. Instead of making a user wait 60 seconds for a GPU task to finish, the API immediately returns a task ID, and a separate Celery worker processes the job asynchronously. The user polls for status. I used this in PolyForge because running 3D generation inside the FastAPI process would block all other requests or crash the GPU with out-of-memory errors.</p>
+</blockquote>
+<h3>Q2: What role does Redis play in your architecture?</h3>
+<blockquote>
+<p>Redis serves two roles. First, as a <strong>message broker</strong> — when FastAPI calls <code>task.delay()</code>, the task payload is pushed to a Redis queue, and Celery workers pull from it. Second, as a <strong>result backend</strong> — when the worker finishes, it stores the result in Redis so the API can look it up when the user polls for status. Redis is perfect because it's in-memory, so reads and writes are sub-millisecond.</p>
+</blockquote>
+<h3>Q3: Why not just use FastAPI's built-in BackgroundTasks?</h3>
+<blockquote>
+<p>FastAPI's <code>BackgroundTasks</code> run inside the same process and memory space as the web server. For CPU/GPU-heavy work like 3D generation, this causes two problems: it blocks the event loop, and if two requests hit simultaneously, you get CUDA out-of-memory crashes. Celery runs in a separate process with configurable concurrency — I set <code>concurrency=1</code> on GPU workers so only one task uses the GPU at a time.</p>
+</blockquote>
+<h3>Q4: How do you handle task failures and retries?</h3>
+<blockquote>
+<p>Celery has built-in retry support. You use <code>@app.task(bind=True, max_retries=3)</code> and inside the task, if an exception occurs, you call <code>self.retry(exc=exc, countdown=backoff_seconds)</code>. I use exponential backoff — first retry after 5 seconds, second after 25, third after 125. If all retries fail, the task state becomes <code>FAILURE</code> and the error is stored in Redis for debugging.</p>
+</blockquote>
+<h3>Q5: What are the different task states in Celery?</h3>
+<blockquote>
+<p><code>PENDING</code> means the task is in the queue but no worker has picked it up yet. <code>STARTED</code> means a worker is executing it. <code>SUCCESS</code> means it finished and the result is available. <code>FAILURE</code> means it raised an exception. <code>RETRY</code> means it failed but is scheduled for another attempt. You check state with <code>AsyncResult(task_id).state</code>.</p>
+</blockquote>
+<hr />
+<h1>🐳 TOPIC 4: Docker</h1>
+<h3>Q1: What is Docker and why do you use it?</h3>
+<blockquote>
+<p>Docker packages an application with all its dependencies into a container — a lightweight, isolated environment that runs the same everywhere. It solves the "works on my machine" problem. In PolyForge, I containerized FastAPI, Redis, and the Celery worker so the entire stack can be launched with one <code>docker-compose up</code> command, with consistent Python versions, CUDA drivers, and system libraries.</p>
+</blockquote>
+<h3>Q2: What is the difference between an image and a container?</h3>
+<blockquote>
+<p>An image is the immutable blueprint — like a class in OOP. A container is a running instance of that image — like an object. You can run multiple containers from the same image. Images are built from Dockerfiles and stored in registries like Docker Hub. Containers have their own isolated filesystem, network, and process space.</p>
+</blockquote>
+<h3>Q3: Why do you copy <code>requirements.txt</code> before copying the rest of the code?</h3>
+<blockquote>
+<p>Docker layer caching. Each instruction in a Dockerfile creates a cached layer. If <code>requirements.txt</code> hasn't changed, Docker reuses the cached <code>pip install</code> layer instead of reinstalling all packages. If I copied everything first with <code>COPY . .</code>, any code change would invalidate the cache and trigger a full reinstall every time. This saves minutes on every build.</p>
+</blockquote>
+<h3>Q4: How do you give a Docker container GPU access?</h3>
+<blockquote>
+<p>Standard Docker cannot see the host GPU. You need the NVIDIA Container Toolkit installed on the host. Then you run with <code>docker run --gpus all</code> or in docker-compose you add a <code>deploy.resources.reservations.devices</code> block with <code>capabilities: [gpu]</code>. This passes the CUDA driver and GPU devices into the container so PyTorch can use hardware acceleration.</p>
+</blockquote>
+<h3>Q5: What is docker-compose and when do you use it?</h3>
+<blockquote>
+<p>Docker-compose lets you define and run multi-container applications with a single YAML file. Instead of manually running <code>docker run</code> for each service, you define all services — API, Redis, Celery worker, database — in <code>docker-compose.yml</code> with their ports, dependencies, and environment variables. One <code>docker-compose up -d</code> starts everything. It's essential for any application with more than one service.</p>
+</blockquote>
+<hr />
+<h1>🔗 TOPIC 5: LangChain + RAG</h1>
+<h3>Q1: What is RAG and why is it better than just prompting an LLM?</h3>
+<blockquote>
+<p>RAG stands for Retrieval-Augmented Generation. Instead of relying only on the LLM's training data (which can be outdated or hallucinate), you first retrieve relevant documents from your own knowledge base using vector similarity search, then inject them into the prompt as context. This gives the LLM accurate, up-to-date information specific to your domain. It's cheaper than fine-tuning and you can update the knowledge base without retraining.</p>
+</blockquote>
+<h3>Q2: What are embeddings and how are they used in RAG?</h3>
+<blockquote>
+<p>Embeddings are dense vector representations of text — they convert words or sentences into arrays of numbers where similar meanings produce similar vectors. In RAG, you embed all your documents and store the vectors in a vector database. When a user asks a question, you embed the query, find the most similar document vectors using cosine similarity, and retrieve those documents as context for the LLM.</p>
+</blockquote>
+<h3>Q3: What is chunking and why does chunk size matter?</h3>
+<blockquote>
+<p>Chunking is splitting large documents into smaller pieces before embedding. If chunks are too large, the embedding becomes too generic and retrieval accuracy drops. If chunks are too small, you lose context. I typically use 500-character chunks with 50-character overlap so important information at chunk boundaries isn't lost. The overlap ensures sentences split across boundaries are still captured.</p>
+</blockquote>
+<h3>Q4: What is the difference between naive RAG and advanced RAG?</h3>
+<blockquote>
+<p>Naive RAG does simple retrieval — embed query, find top-k similar chunks, pass to LLM. It fails when the query doesn't semantically match the document phrasing. Advanced RAG adds techniques like: query rewriting (rephrase the question for better retrieval), HyDE (generate a hypothetical answer to search against), re-ranking with cross-encoders, and agentic RAG where the system can decide to search again if the first results aren't relevant.</p>
+</blockquote>
+<h3>Q5: How does LangChain's chain composition work?</h3>
+<blockquote>
+<p>LangChain uses the pipe operator <code>|</code> to compose components into chains. For example: <code>prompt | llm | output_parser</code>. Data flows left to right — the prompt template formats the input, passes it to the LLM, and the output parser structures the response. Each component implements a common interface with <code>.invoke()</code>, so you can swap out any piece — change the LLM from Groq to Gemini without touching the rest of the chain.</p>
+</blockquote>
+<hr />
+<h1>🔄 TOPIC 6: LangGraph</h1>
+<h3>Q1: Why did you use LangGraph instead of standard LangChain chains?</h3>
+<blockquote>
+<p>Standard LangChain chains are linear DAGs — data flows in one direction from input to output. But real agent workflows need cycles. In my Medical RAG project, the Skeptic agent might reject a treatment plan and loop it back to the treatment agent for revision. LangGraph provides a <code>StateGraph</code> with conditional edges that can route backward, creating loops with state persistence and checkpoints — something LangChain chains simply cannot do.</p>
+</blockquote>
+<h3>Q2: What is the StateGraph and how does state work?</h3>
+<blockquote>
+<p>A StateGraph is a graph where every node reads from and writes to a shared state object — typically a Python <code>TypedDict</code>. Each node is a function that takes the current state and returns a partial update. LangGraph merges the update into the state using reducers. For example, if multiple nodes write to a <code>messages</code> list, the <code>add_messages</code> reducer appends new messages instead of overwriting. This shared state is how nodes communicate with each other.</p>
+</blockquote>
+<h3>Q3: What are conditional edges and how do they enable agent loops?</h3>
+<blockquote>
+<p>Conditional edges let you define a routing function that inspects the current state and decides which node to go to next. For example, after the critic node runs, a routing function checks if the output quality is sufficient — if yes, go to END; if no, route back to the generator node. This conditional routing back to a previous node creates a cycle — the fundamental difference between LangGraph and linear chains.</p>
+</blockquote>
+<h3>Q4: What is the Supervisor Agent Pattern?</h3>
+<blockquote>
+<p>In a multi-agent system, the Supervisor is a central LLM that acts as a task router. It reads the user's request, decides which specialized worker agent should handle it — researcher, coder, data analyst — and routes the task accordingly. After the worker completes, the supervisor can decide to route to another worker or finish. In my Aura project, the supervisor decides whether a task needs CLI execution, file management, or database queries.</p>
+</blockquote>
+<h3>Q5: How do checkpoints work in LangGraph?</h3>
+<blockquote>
+<p>Checkpoints save the full state of the graph at each step, enabling pause/resume, debugging, and human-in-the-loop workflows. If a graph reaches a dangerous operation, you can checkpoint, ask the user for approval, and resume from exactly where it left off. Checkpoints also enable time-travel debugging — you can replay the graph from any previous state to understand how a decision was made.</p>
+</blockquote>
+<hr />
+<h1>🗄️ TOPIC 7: ChromaDB / Vector Database</h1>
+<h3>Q1: What is a vector database and how is it different from SQL?</h3>
+<blockquote>
+<p>A vector database stores high-dimensional vectors (embeddings) and enables fast similarity search using algorithms like cosine similarity or approximate nearest neighbors (ANN). SQL databases search by exact matches or range queries on structured columns. Vector databases search by meaning — "find documents most semantically similar to this query." ChromaDB, Pinecone, and Weaviate are popular examples. I use ChromaDB because it's lightweight, runs locally, and integrates directly with LangChain.</p>
+</blockquote>
+<h3>Q2: What similarity metric does ChromaDB use?</h3>
+<blockquote>
+<p>ChromaDB uses cosine similarity by default. It measures the angle between two vectors — if two embeddings point in the same direction, the cosine similarity is close to 1 (very similar). It ignores magnitude and only cares about direction, which is ideal for text embeddings where the "direction" captures semantic meaning regardless of document length.</p>
+</blockquote>
+<h3>Q3: What is the difference between ChromaDB and Pinecone?</h3>
+<blockquote>
+<p>ChromaDB is open-source and runs locally — no cloud account needed, zero cost, great for prototyping and small-to-medium datasets. Pinecone is a fully managed cloud service — it scales to billions of vectors, handles replication and backups, but costs money and requires internet. For hackathons and local development I use ChromaDB. For production at scale, you'd consider Pinecone or pgvector.</p>
+</blockquote>
+<h3>Q4: How do you handle updates when your knowledge base changes?</h3>
+<blockquote>
+<p>You have two options. First, delete the old document by its ID and insert the updated version — ChromaDB supports <code>collection.update()</code> which replaces the embedding and text for a given ID. Second, for complete refreshes, you can delete the entire collection and re-embed everything. I use the first approach for incremental updates and the second for full reindexing when the source data changes significantly.</p>
+</blockquote>
+<h3>Q5: What embedding model do you use and why?</h3>
+<blockquote>
+<p>I typically use <code>all-MiniLM-L6-v2</code> from Sentence Transformers via HuggingFace. It produces 384-dimensional vectors, runs fast on CPU, and has good semantic accuracy for general-purpose text. For domain-specific tasks like medical documents, you might want a specialized model. The key tradeoff is dimension size vs accuracy — higher dimensions are more accurate but use more memory and slower to search.</p>
+</blockquote>
+<hr />
+<h1>🌐 TOPIC 8: JavaScript ES6+</h1>
+<h3>Q1: What is the difference between <code>var</code>, <code>let</code>, and <code>const</code>?</h3>
+<blockquote>
+<p><code>var</code> is function-scoped and gets hoisted with <code>undefined</code>, which causes subtle bugs. <code>let</code> and <code>const</code> are block-scoped — they exist only inside the <code>{}</code> where they're declared. <code>const</code> prevents reassignment, though object properties inside a const object can still be mutated. In modern JavaScript, I always use <code>const</code> by default and <code>let</code> only when the value needs to change. I never use <code>var</code>.</p>
+</blockquote>
+<h3>Q2: What is the event loop in JavaScript?</h3>
+<blockquote>
+<p>JavaScript is single-threaded but handles concurrency through the event loop. Synchronous code runs on the call stack. Async operations like <code>fetch</code>, <code>setTimeout</code>, and I/O callbacks are sent to Web APIs, and when they complete, their callbacks are placed in the task queue. The event loop continuously checks: if the call stack is empty, it takes the next callback from the queue and pushes it onto the stack. This is how JavaScript handles thousands of concurrent operations without multi-threading.</p>
+</blockquote>
+<h3>Q3: What is a closure?</h3>
+<blockquote>
+<p>A closure is when a function retains access to variables from its outer scope even after the outer function has returned. For example, a <code>createCounter()</code> function that returns an <code>increment()</code> function — the inner function "closes over" the <code>count</code> variable and remembers it between calls. Closures are the basis for data privacy in JavaScript and are used everywhere — in event handlers, callbacks, and module patterns.</p>
+</blockquote>
+<h3>Q4: What is the difference between <code>==</code> and <code>===</code>?</h3>
+<blockquote>
+<p><code>==</code> does type coercion before comparing — so <code>"5" == 5</code> is <code>true</code> because JavaScript converts the string to a number. <code>===</code> is strict equality — no coercion, both type and value must match — so <code>"5" === 5</code> is <code>false</code>. Always use <code>===</code> to avoid unexpected behavior. The only common exception is <code>x == null</code> which checks for both <code>null</code> and <code>undefined</code>.</p>
+</blockquote>
+<h3>Q5: Explain <code>map</code>, <code>filter</code>, and <code>reduce</code>.</h3>
+<blockquote>
+<p><code>map</code> transforms every element and returns a new array of the same length — like converting all prices to a different currency. <code>filter</code> returns a new array with only elements that pass a test — like keeping only active agents. <code>reduce</code> accumulates all elements into a single value — like summing total conversations. These three are the foundation of functional programming in JavaScript and I use them constantly instead of <code>for</code> loops.</p>
+</blockquote>
+<hr />
+<h1>⚛️ TOPIC 9: React</h1>
+<h3>Q1: What is the Virtual DOM and why does React use it?</h3>
+<blockquote>
+<p>The real DOM is slow to update because every change triggers browser layout, paint, and reflow. React creates a lightweight copy called the Virtual DOM. When state changes, React builds a new Virtual DOM, diffs it against the previous one, and only updates the specific real DOM nodes that actually changed. This "reconciliation" process makes React fast because it minimizes expensive DOM operations.</p>
+</blockquote>
+<h3>Q2: What is the difference between <code>useState</code> and <code>useEffect</code>?</h3>
+<blockquote>
+<p><code>useState</code> manages local component state — it holds a value and gives you a setter function to update it, which triggers a re-render. <code>useEffect</code> handles side effects — things that happen outside the render cycle like API calls, subscriptions, or DOM manipulations. <code>useEffect</code> runs after the component renders. The dependency array controls when it re-runs — empty <code>[]</code> means only on mount, <code>[variable]</code> means when that variable changes.</p>
+</blockquote>
+<h3>Q3: Why do we need keys when rendering lists?</h3>
+<blockquote>
+<p>Keys help React identify which items have changed, been added, or removed during re-renders. Without keys, React re-renders the entire list from scratch. With unique keys, React can match old and new elements efficiently and only update what changed. Keys should be stable, unique identifiers like database IDs — never use array index as key if the list order can change, because it causes incorrect component reuse.</p>
+</blockquote>
+<h3>Q4: What is "lifting state up"?</h3>
+<blockquote>
+<p>When two sibling components need to share the same data, you move the state to their closest common parent. The parent holds the state and passes it down as props, along with a setter function. This way, when one child updates the state, the other child sees the change through props. It's React's primary pattern for component communication — I used this in the hackathon for the model selector dropdown affecting the chat panel.</p>
+</blockquote>
+<h3>Q5: What is the difference between controlled and uncontrolled components?</h3>
+<blockquote>
+<p>A controlled component's value is driven by React state — the input's <code>value</code> is always <code>{state}</code> and changes go through <code>onChange → setState</code>. React is the "single source of truth." An uncontrolled component manages its own value internally via the DOM — you read it with a <code>ref</code> when needed. Controlled is the recommended pattern because it gives you full control over validation, formatting, and conditional logic.</p>
+</blockquote>
+<hr />
+<h1>🔥 TOPIC 10: PyTorch + LoRA</h1>
+<h3>Q1: What is a tensor in PyTorch?</h3>
+<blockquote>
+<p>A tensor is a multi-dimensional array — similar to a NumPy ndarray but with two key additions: it can run on GPU for hardware-accelerated computation, and it supports automatic gradient tracking for backpropagation. A 1D tensor is a vector, 2D is a matrix, 3D+ is used for batches of images or sequences. Everything in PyTorch — model weights, input data, gradients — is a tensor.</p>
+</blockquote>
+<h3>Q2: Walk me through the 5 steps of a PyTorch training loop.</h3>
+<blockquote>
+<p>Step 1: <code>optimizer.zero_grad()</code> — clear gradients from the previous step so they don't accumulate. Step 2: Forward pass — feed input through the model to get predictions. Step 3: Compute loss — compare predictions against ground truth using a loss function like CrossEntropyLoss. Step 4: <code>loss.backward()</code> — backpropagation, compute gradients for every parameter. Step 5: <code>optimizer.step()</code> — update model weights using the computed gradients.</p>
+</blockquote>
+<h3>Q3: What is the difference between <code>model.train()</code> and <code>model.eval()</code>?</h3>
+<blockquote>
+<p><code>model.train()</code> enables training-specific behaviors like dropout (randomly zeroing neurons to prevent overfitting) and batch normalization (using batch statistics). <code>model.eval()</code> disables these — dropout is turned off so all neurons contribute, and batch norm uses running statistics instead of batch statistics. You must switch to <code>eval()</code> before inference, otherwise predictions will be noisy and non-deterministic.</p>
+</blockquote>
+<h3>Q4: What is LoRA and why did you use it?</h3>
+<blockquote>
+<p>LoRA stands for Low-Rank Adaptation. Instead of fine-tuning all billions of parameters in a large model, LoRA freezes the original weights and injects small trainable matrices into specific layers. These matrices use low-rank decomposition — so instead of training a huge weight update matrix, you train two small matrices A and B where the update is A×B. In PolyForge, I used LoRA to fine-tune Qwen for prompt enrichment — training only 0.004% of total parameters while keeping the base model's general knowledge intact.</p>
+</blockquote>
+<h3>Q5: What is <code>torch.no_grad()</code> and when do you use it?</h3>
+<blockquote>
+<p><code>torch.no_grad()</code> disables gradient computation. During inference, you don't need gradients because you're not training — you're just making predictions. Disabling gradients reduces memory usage significantly (no need to store computation graph) and speeds up execution. Always wrap inference code in <code>with torch.no_grad()</code> — forgetting this is a common cause of GPU out-of-memory errors during evaluation.</p>
+</blockquote>
+<hr />
+<h1>🤖 TOPIC 11: TFLite / TinyML</h1>
+<h3>Q1: What is TinyML and why run ML on microcontrollers?</h3>
+<blockquote>
+<p>TinyML is running machine learning models on tiny, resource-constrained devices like ESP32 or Arduino. The benefits are: sub-20ms latency (no network round-trip), works offline without WiFi, user data never leaves the device (privacy), and no cloud compute costs. In Gestura, I classified hand gestures locally on the ESP32 so the wearable responds instantly without depending on a server.</p>
+</blockquote>
+<h3>Q2: How did you fit a neural network on an ESP32 with only 520KB SRAM?</h3>
+<blockquote>
+<p>Three techniques. First, I used a small architecture — a 3-layer MLP, not a transformer. Second, I converted the trained model using TFLite Micro converter. Third, I applied INT8 quantization — converting all weights from 32-bit floats to 8-bit integers, reducing model size by 75% and enabling integer-only arithmetic that the ESP32's ALU can execute efficiently. The final model was under 50KB.</p>
+</blockquote>
+<h3>Q3: What is quantization?</h3>
+<blockquote>
+<p>Quantization reduces the numerical precision of model weights and activations. FP32 (32-bit float) → INT8 (8-bit integer) makes the model 4x smaller and faster, with minimal accuracy loss for simple tasks. Post-training quantization applies this after training. Quantization-aware training simulates low-precision during training for better accuracy. For edge devices with no FPU (floating-point unit), INT8 quantization is essential.</p>
+</blockquote>
+<h3>Q4: What sensor did you use in Gestura and how does the data flow?</h3>
+<blockquote>
+<p>I used the MPU6050 IMU sensor which provides 6 axes of data — 3-axis accelerometer (linear motion) and 3-axis gyroscope (rotation). The ESP32 reads raw sensor data at 50Hz over I2C, normalizes it to floats, feeds a sliding window of readings into the TFLite Micro interpreter, and the model classifies the gesture in under 20ms. The predicted gesture then triggers an action like media control or mouse movement via Bluetooth HID.</p>
+</blockquote>
+<h3>Q5: What is TFLite Micro and how is it different from regular TFLite?</h3>
+<blockquote>
+<p>Regular TFLite runs on mobile phones with an OS, file system, and memory management. TFLite Micro is stripped down for bare-metal microcontrollers — no OS, no dynamic memory allocation, no file system. It uses a fixed memory arena allocated at compile time. The interpreter runs the model using only static memory, making it predictable and safe for real-time embedded systems. The runtime overhead is about 20KB.</p>
+</blockquote>
+<hr />
+<h1>🗃️ TOPIC 12: MongoDB</h1>
+<h3>Q1: What is MongoDB and when would you use it over PostgreSQL?</h3>
+<blockquote>
+<p>MongoDB is a NoSQL document database that stores data as JSON-like documents (BSON). Use MongoDB when your schema is flexible or evolving — like chat messages, user activity logs, or agent configurations where each document might have different fields. Use PostgreSQL when you need strong relationships, complex joins, transactions, and strict data integrity — like financial records or user accounts.</p>
+</blockquote>
+<h3>Q2: What is the aggregation pipeline?</h3>
+<blockquote>
+<p>The aggregation pipeline is MongoDB's data processing framework — a sequence of stages that transform documents step by step. Common stages: <code>$match</code> (filter), <code>$group</code> (aggregate by field), <code>$sort</code>, <code>$project</code> (reshape output), <code>$lookup</code> (join with another collection). It's like SQL's GROUP BY + WHERE + JOIN but expressed as a pipeline of transformations. I used it to calculate per-channel conversation metrics.</p>
+</blockquote>
+<h3>Q3: What is indexing in MongoDB and why does it matter?</h3>
+<blockquote>
+<p>An index creates a sorted data structure (B-tree) on specific fields so MongoDB can find documents without scanning every document in the collection. Without an index, a query on a million-document collection does a full collection scan. With an index on the queried field, it's a fast B-tree lookup. The tradeoff is indexes use memory and slow down writes, so you only index fields you frequently query or sort by.</p>
+</blockquote>
+<h3>Q4: What is embedding vs referencing in MongoDB?</h3>
+<blockquote>
+<p>Embedding means nesting related data inside the same document — like putting an array of messages inside a conversation document. Referencing means storing the related data in a separate collection and linking by ID — like SQL foreign keys. Embed when the data is always accessed together and doesn't grow unbounded. Reference when the related data is large, accessed independently, or shared across multiple documents.</p>
+</blockquote>
+<h3>Q5: How do you connect MongoDB from Python?</h3>
+<blockquote>
+<p>Using PyMongo — the official Python driver. You create a <code>MongoClient</code> with the connection string, select a database, then a collection. Operations mirror the MongoDB shell: <code>collection.insert_one()</code>, <code>collection.find()</code>, <code>collection.update_one()</code>, <code>collection.delete_one()</code>. For async FastAPI applications, you'd use Motor (async PyMongo) so database calls don't block the event loop.</p>
+</blockquote>
+<hr />
+<h1>🌿 TOPIC 13: Git</h1>
+<h3>Q1: What is the difference between <code>git merge</code> and <code>git rebase</code>?</h3>
+<blockquote>
+<p>Merge creates a new merge commit that combines two branches — it preserves the full history but creates a non-linear graph. Rebase replays your commits on top of the target branch — it creates a clean, linear history but rewrites commit hashes. I use merge for shared branches (main, develop) and rebase for cleaning up local feature branches before merging. Never rebase commits that have been pushed and shared with others.</p>
+</blockquote>
+<h3>Q2: What is <code>git stash</code> and when do you use it?</h3>
+<blockquote>
+<p>Stash temporarily saves your uncommitted changes so you can switch to a clean working directory — like when you need to quickly fix a bug on another branch but don't want to commit half-finished work. <code>git stash</code> saves the changes, <code>git stash pop</code> restores them. It's like a clipboard for your working directory.</p>
+</blockquote>
+<h3>Q3: How do you resolve a merge conflict?</h3>
+<blockquote>
+<p>When two branches modify the same line, Git marks the conflict with <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code>, and <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> markers in the file. I open the file, read both versions, decide which code to keep (or combine them), remove the conflict markers, then <code>git add</code> the resolved file and <code>git commit</code>. The key is understanding the intent of both changes — sometimes you need both, sometimes one replaces the other.</p>
+</blockquote>
+<h3>Q4: What is <code>.gitignore</code> and what should be in it?</h3>
+<blockquote>
+<p><code>.gitignore</code> tells Git which files and directories to exclude from version control. Essential entries: <code>node_modules/</code> (npm dependencies, huge), <code>.env</code> (API keys and secrets — never commit these), <code>__pycache__/</code> (Python bytecode), <code>.venv/</code> (virtual environment), <code>*.pyc</code>, <code>dist/</code>, <code>.DS_Store</code>. The rule is: never commit files that are generated, contain secrets, or are environment-specific.</p>
+</blockquote>
+<h3>Q5: What are conventional commits?</h3>
+<blockquote>
+<p>Conventional commits are a standardized format for commit messages: <code>type: description</code>. Common types: <code>feat:</code> (new feature), <code>fix:</code> (bug fix), <code>docs:</code> (documentation), <code>refactor:</code> (code restructure without behavior change), <code>chore:</code> (maintenance tasks). This makes git history readable and enables automated changelog generation. Example: <code>feat: add groq streaming to chat endpoint</code>.</p>
+</blockquote>
+<hr />
+<h1>🔐 TOPIC 14: REST API + JWT + Middleware</h1>
+<h3>Q1: What is a REST API?</h3>
+<blockquote>
+<p>REST is an architectural style for web APIs using standard HTTP methods: GET (read), POST (create), PUT (update), DELETE (remove). Each URL represents a resource — <code>/agents/123</code> is agent 123. REST APIs are stateless — every request contains all the information needed, the server doesn't remember previous requests. Response format is typically JSON. Status codes communicate the result: 200 success, 404 not found, 500 server error.</p>
+</blockquote>
+<h3>Q2: What is JWT and how does it work?</h3>
+<blockquote>
+<p>JWT is a JSON Web Token used for stateless authentication. It has three parts separated by dots: Header (algorithm), Payload (user data and expiration), and Signature (cryptographic hash using a secret key). The server creates a JWT after login and sends it to the client. The client sends it with every request in the Authorization header. The server verifies the signature mathematically — no database lookup needed. This makes it scalable across distributed microservices.</p>
+</blockquote>
+<h3>Q3: What is middleware?</h3>
+<blockquote>
+<p>Middleware is code that runs in a pipeline between the incoming request and your route handler. Each middleware can inspect, modify, or reject the request before passing it to the next middleware or the final handler. Common middleware: authentication (verify JWT), CORS (allow cross-origin requests), logging (record request duration), rate limiting (block excessive requests), error handling (catch unhandled exceptions and return clean error responses).</p>
+</blockquote>
+<h3>Q4: What is CORS and why does it exist?</h3>
+<blockquote>
+<p>CORS stands for Cross-Origin Resource Sharing. Browsers block requests from one domain to another by default for security — this prevents a malicious website from calling your API using a logged-in user's cookies. CORS headers tell the browser which origins are allowed. In development, your React frontend on <code>localhost:3000</code> and FastAPI backend on <code>localhost:8000</code> are different origins, so you need to configure CORS middleware to allow requests between them.</p>
+</blockquote>
+<h3>Q5: What is the difference between authentication and authorization?</h3>
+<blockquote>
+<p>Authentication is verifying WHO you are — "Are you really Vaibhav?" (login with credentials, JWT verification). Authorization is verifying WHAT you're allowed to do — "Is Vaibhav allowed to delete this agent?" (role checks, permission levels). Authentication always comes first. A request can be authenticated (valid JWT) but unauthorized (user doesn't have admin role). In my middleware, I verify the JWT first (authentication), then check the user's role before allowing admin operations (authorization).</p>
+</blockquote>
+<hr />
+<h1>🔌 TOPIC 15: MCP (Model Context Protocol)</h1>
+<h3>Q1: What is MCP and why does it exist?</h3>
+<blockquote>
+<p>MCP is the Model Context Protocol, created by Anthropic. It's a standardized way to connect AI models to external tools and data sources — like a USB-C port for AI. Before MCP, every AI app had to write custom tool integrations from scratch. MCP defines a universal client-server protocol using JSON-RPC, so any MCP-compatible AI client can discover and use any MCP-compatible tool server. This means you write the integration once and it works with any AI model.</p>
+</blockquote>
+<h3>Q2: What is the architecture of MCP?</h3>
+<blockquote>
+<p>Three components: the MCP Host (your application), the MCP Client (manages connections), and MCP Servers (provide tools and data). The client connects to servers over stdio (local processes) or SSE/HTTP (remote servers). On connection, the client calls <code>list_tools()</code> to discover what tools are available, then calls specific tools with <code>call_tool(name, arguments)</code>. The AI model sees the tool descriptions and decides which ones to invoke.</p>
+</blockquote>
+<h3>Q3: How did you use MCP in the Aura project?</h3>
+<blockquote>
+<p>In Aura, I built an MCP Client Manager that connects to multiple MCP servers simultaneously — filesystem, PostgreSQL, shell execution, and more. When the LangGraph agent needs to perform an action, it checks the available MCP tools, selects the right one, and invokes it through the standardized protocol. This means I can add new tool capabilities — like Slack or GitHub — by just connecting a new MCP server, without changing any agent code.</p>
+</blockquote>
+<h3>Q4: What is Human-in-the-Loop and why is it important for agents?</h3>
+<blockquote>
+<p>Human-in-the-Loop means requiring user approval before the AI executes potentially dangerous operations — like deleting files, dropping database tables, or running destructive shell commands. In Aura, I categorize MCP tools as safe or dangerous. Safe tools (read file, list directory) execute automatically. Dangerous tools (delete, write, execute) pause execution, show the user what the agent wants to do, and wait for explicit approval. This prevents the AI from causing irreversible damage.</p>
+</blockquote>
+<h3>Q5: What is the difference between MCP Tools, Resources, and Prompts?</h3>
+<blockquote>
+<p>Tools are functions the AI can call to take actions — like <code>run_query</code>, <code>send_email</code>, <code>create_file</code>. Resources are data sources the AI can read — like file contents, database rows, or API responses. Prompts are pre-built prompt templates that the server provides — like a "summarize document" template with specific formatting. Tools are for doing, Resources are for reading, Prompts are for structuring. The AI model dynamically discovers all three when it connects to an MCP server.</p>
+</blockquote>
+<hr />
+<blockquote>
+<p>[!TIP]
+<strong>How to use this file:</strong>
+1. Read each Q&amp;A once silently (15 min for all 75)
+2. Then pick the 5 topics most relevant to Upteky: <strong>FastAPI, Celery, LangGraph, JS/React, JWT/Middleware</strong>
+3. For those 5 topics, read each answer OUT LOUD once
+4. Done. Your brain will recall the structure when asked.</p>
+</blockquote>
+</body>
+</html>

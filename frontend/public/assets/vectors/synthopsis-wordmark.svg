@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1104 120" width="100%" height="100%">
+  <!-- "synthopsis" vector wordmark -->
+  <!-- s -->
+  <g transform="translate(0,0)">
+    <polygon points="0,0 80,0 100,24 24,24" fill="currentColor"/>
+    <polygon points="20,38 100,38 80,62 0,62" fill="currentColor"/>
+    <polygon points="0,76 80,76 100,100 24,100" fill="currentColor"/>
+  </g>
+  <!-- y -->
+  <g transform="translate(120,0)">
+    <polygon points="0,0 30,0 50,40 20,40" fill="currentColor"/>
+    <polygon points="100,0 70,0 50,40 80,40" fill="currentColor"/>
+    <rect x="38" y="40" width="24" height="60" fill="currentColor"/>
+  </g>
+  <!-- n -->
+  <g transform="translate(240,0)">
+    <rect x="0" y="0" width="24" height="100" fill="currentColor"/>
+    <rect x="24" y="0" width="52" height="24" fill="currentColor"/>
+    <rect x="76" y="24" width="24" height="76" fill="currentColor"/>
+  </g>
+  <!-- t -->
+  <g transform="translate(360,0)">
+    <rect x="0" y="0" width="100" height="24" fill="currentColor"/>
+    <rect x="38" y="24" width="24" height="76" fill="currentColor"/>
+  </g>
+  <!-- h -->
+  <g transform="translate(480,0)">
+    <rect x="0" y="0" width="24" height="100" fill="currentColor"/>
+    <rect x="24" y="24" width="52" height="24" fill="currentColor"/>
+    <rect x="76" y="48" width="24" height="52" fill="currentColor"/>
+  </g>
+  <!-- o -->
+  <g transform="translate(600,0)">
+    <rect x="0" y="0" width="24" height="100" fill="currentColor"/>
+    <rect x="24" y="0" width="52" height="24" fill="currentColor"/>
+    <rect x="76" y="0" width="24" height="100" fill="currentColor"/>
+    <rect x="24" y="76" width="52" height="24" fill="currentColor"/>
+  </g>
+  <!-- p -->
+  <g transform="translate(720,0)">
+    <rect x="0" y="0" width="24" height="120" fill="currentColor"/>
+    <rect x="24" y="0" width="52" height="24" fill="currentColor"/>
+    <rect x="76" y="24" width="24" height="26" fill="currentColor"/>
+    <rect x="24" y="50" width="52" height="24" fill="currentColor"/>
+  </g>
+  <!-- s -->
+  <g transform="translate(840,0)">
+    <polygon points="0,0 80,0 100,24 24,24" fill="currentColor"/>
+    <polygon points="20,38 100,38 80,62 0,62" fill="currentColor"/>
+    <polygon points="0,76 80,76 100,100 24,100" fill="currentColor"/>
+  </g>
+  <!-- i -->
+  <g transform="translate(960,0)">
+    <rect x="0" y="0" width="24" height="24" fill="currentColor"/>
+    <rect x="0" y="38" width="24" height="62" fill="currentColor"/>
+  </g>
+  <!-- s -->
+  <g transform="translate(1004,0)">
+    <polygon points="0,0 80,0 100,24 24,24" fill="currentColor"/>
+    <polygon points="20,38 100,38 80,62 0,62" fill="currentColor"/>
+    <polygon points="0,76 80,76 100,100 24,100" fill="currentColor"/>
+  </g>
+</svg>

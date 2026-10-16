@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Synthopsis - Live Testing Playground</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { background-color: #0d1117; color: #c9d1d9; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    .glass-card { background: rgba(22, 27, 34, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
+    .wa-bubble-user { background: #005c4b; color: #e9edef; border-radius: 8px 8px 0px 8px; }
+    .wa-bubble-bot { background: #202c33; color: #e9edef; border-radius: 8px 8px 8px 0px; }
+    .custom-scroll::-webkit-scrollbar { width: 6px; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+  </style>
+</head>
+<body class="p-4 md:p-8">
+
+  <!-- Header -->
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 pb-6 border-b border-gray-800">
+    <div>
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">🌌</span>
+        <h1 class="text-2xl font-bold text-white tracking-tight">Synthopsis <span class="text-xs bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full border border-emerald-500/30">Backend Active on Port 8000</span></h1>
+      </div>
+      <p class="text-gray-400 text-sm mt-1">Autonomous Multi-Model AI Agent Platform • Real-time Interactive Test Bench</p>
+    </div>
+    <div class="flex gap-2">
+      <a href="http://localhost:8000/docs" target="_blank" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-sm font-medium transition flex items-center gap-2 shadow-lg shadow-indigo-600/30">
+        <i class="fas fa-book-open"></i> Swagger API Docs
+      </a>
+      <button onclick="checkHealth()" class="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-gray-200 rounded-lg text-sm border border-gray-700 transition flex items-center gap-2">
+        <i class="fas fa-heartbeat text-emerald-400"></i> Check Health
+      </button>
+    </div>
+  </div>
+
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+    <!-- Left Column: Controls & Presets -->
+    <div class="space-y-6">
+
+      <!-- 1-Click Judge Scenarios -->
+      <div class="glass-card p-5 rounded-2xl">
+        <h2 class="text-white font-semibold text-sm uppercase tracking-wider mb-3 flex items-center gap-2">
+          <i class="fas fa-magic text-amber-400"></i> 1-Click Judge Test Scenarios
+        </h2>
+        <div class="space-y-2">
+          <button onclick="injectScenario('plastopack')" class="w-full text-left p-3 rounded-xl bg-gray-800/60 hover:bg-gray-800 border border-gray-700/50 hover:border-emerald-500/50 transition">
+            <div class="flex items-center justify-between text-xs font-semibold text-emerald-400">
+              <span>📦 JM PlastoPack (Manufacturing)</span>
+              <span class="bg-emerald-900/60 text-emerald-300 px-1.5 py-0.5 rounded text-[10px]">WhatsApp</span>
+            </div>
+            <p class="text-xs text-gray-300 mt-1 line-clamp-2">25,000 HDPE bottles MOQ inquiry + Track order #JMP-7721.</p>
+          </button>
+
+          <button onclick="injectScenario('logistics')" class="w-full text-left p-3 rounded-xl bg-gray-800/60 hover:bg-gray-800 border border-gray-700/50 hover:border-blue-500/50 transition">
+            <div class="flex items-center justify-between text-xs font-semibold text-blue-400">
+              <span>🚚 UAE Logistics (Lead Reviver)</span>
+              <span class="bg-blue-900/60 text-blue-300 px-1.5 py-0.5 rounded text-[10px]">WhatsApp</span>
+            </div>
+            <p class="text-xs text-gray-300 mt-1 line-clamp-2">Cold lead re-activation: Spot rate quote from Dubai to Mundra.</p>
+          </button>
+
+          <button onclick="injectScenario('realestate')" class="w-full text-left p-3 rounded-xl bg-gray-800/60 hover:bg-gray-800 border border-gray-700/50 hover:border-purple-500/50 transition">
+            <div class="flex items-center justify-between text-xs font-semibold text-purple-400">
+              <span>🏢 Real Estate (AuraEstate)</span>
+              <span class="bg-purple-900/60 text-purple-300 px-1.5 py-0.5 rounded text-[10px]">Web Chat</span>
+            </div>
+            <p class="text-xs text-gray-300 mt-1 line-clamp-2">4 BHK penthouse in GIFT City / Ahmedabad (₹3.5 Cr budget).</p>
+          </button>
+
+          <button onclick="injectScenario('pharma')" class="w-full text-left p-3 rounded-xl bg-gray-800/60 hover:bg-gray-800 border border-gray-700/50 hover:border-rose-500/50 transition">
+            <div class="flex items-center justify-between text-xs font-semibold text-rose-400">
+              <span>💊 Game of Pharma (Compliance)</span>
+              <span class="bg-rose-900/60 text-rose-300 px-1.5 py-0.5 rounded text-[10px]">Email</span>
+            </div>
+            <p class="text-xs text-gray-300 mt-1 line-clamp-2">Urgent BMR deviation assessment for WHO-GMP audit readiness.</p>
+          </button>
+        </div>
+      </div>
+
+      <!-- Agent Configuration -->
+      <div class="glass-card p-5 rounded-2xl space-y-4">
+        <h2 class="text-white font-semibold text-sm uppercase tracking-wider flex items-center gap-2">
+          <i class="fas fa-sliders text-indigo-400"></i> Active Agent Settings
+        </h2>
+        
+        <div>
+          <label class="block text-xs text-gray-400 mb-1">Industry Vertical</label>
+          <select id="selVertical" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-2 text-sm text-gray-200 focus:outline-none focus:border-indigo-500">
+            <option value="manufacturing">🏭 Manufacturing (JM PlastoPack)</option>
+            <option value="logistics">🚚 Logistics (UAE Cold Lead Reviver)</option>
+            <option value="real_estate">🏢 Real Estate (AuraEstate Copilot)</option>
+            <option value="pharma">💊 Pharma (Doc Compliance)</option>
+            <option value="general">🤖 General Enterprise Agent</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs text-gray-400 mb-1">Target Communication Channel</label>
+          <div class="grid grid-cols-3 gap-2">
+            <button type="button" onclick="setChannel('whatsapp')" id="btnChWa" class="py-2 rounded-lg text-xs font-medium border border-emerald-500 bg-emerald-500/20 text-emerald-300">WhatsApp</button>
+            <button type="button" onclick="setChannel('web')" id="btnChWeb" class="py-2 rounded-lg text-xs font-medium border border-gray-700 bg-gray-800 text-gray-400">Web</button>
+            <button type="button" onclick="setChannel('email')" id="btnChEmail" class="py-2 rounded-lg text-xs font-medium border border-gray-700 bg-gray-800 text-gray-400">Email</button>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs text-gray-400 mb-1">AI Model Engine</label>
+          <select id="selModel" class="w-full bg-gray-900 border border-gray-700 rounded-lg p-2 text-sm text-gray-200 focus:outline-none focus:border-indigo-500">
+            <option value="auto">⚡ Auto-Route (Groq for Chat, Gemini for Email)</option>
+            <option value="groq">⚡ Groq (Llama 3.3 70B - ~200ms ultra-low latency)</option>
+            <option value="gemini">🧠 Google Gemini 2.0 Flash (Deep Reasoning)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Quick Workflow Trigger -->
+      <div class="glass-card p-5 rounded-2xl">
+        <h2 class="text-white font-semibold text-sm uppercase tracking-wider mb-2 flex items-center gap-2">
+          <i class="fas fa-project-diagram text-cyan-400"></i> Workflow Pipeline
+        </h2>
+        <p class="text-xs text-gray-400 mb-3">Simulate the 4-step autonomous pipeline: Inbound Trigger ➔ Intent Scoring ➔ Decision Gate ➔ ERP Dispatch.</p>
+        <button onclick="runWorkflowSimulation()" class="w-full py-2.5 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white rounded-xl text-xs font-semibold shadow-lg shadow-cyan-600/20 flex items-center justify-center gap-2">
+          <i class="fas fa-play"></i> Run 4-Step Pipeline Simulation
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Middle & Right Column: Interactive Chat Bench -->
+    <div class="lg:col-span-2 space-y-6">
+
+      <!-- Chat Container -->
+      <div class="glass-card rounded-2xl flex flex-col h-[580px] overflow-hidden border border-gray-800">
+        
+        <!-- Chat Header -->
+        <div class="p-4 bg-gray-900/80 border-b border-gray-800 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div id="avatarBadge" class="w-10 h-10 rounded-full bg-emerald-600/30 border border-emerald-500/40 flex items-center justify-center text-xl">
+              📦
+            </div>
+            <div>
+              <h3 id="agentTitle" class="text-sm font-semibold text-white">JM PlastoPack Manufacturing Bot</h3>
+              <p id="agentSubtitle" class="text-xs text-gray-400">Channel: <span class="text-emerald-400 font-medium">WhatsApp</span> • Auto-routing with Groq LPU</p>
+            </div>
+          </div>
+          <button onclick="clearChat()" class="text-xs text-gray-400 hover:text-gray-200 px-2 py-1 rounded bg-gray-800 border border-gray-700">
+            Clear Chat
+          </button>
+        </div>
+
+        <!-- Messages Feed -->
+        <div id="messagesFeed" class="flex-1 p-4 overflow-y-auto custom-scroll space-y-3 bg-[#0b141a]/50">
+          <div class="flex justify-start">
+            <div class="wa-bubble-bot p-3 text-xs max-w-[85%] shadow">
+              Namaste! I am the <b>JM PlastoPack Assistant</b> powered by Synthopsis. How can I assist you with custom packaging or order tracking today?
+            </div>
+          </div>
+        </div>
+
+        <!-- Input Box -->
+        <div class="p-3 bg-gray-900/90 border-t border-gray-800">
+          <form id="chatForm" onsubmit="sendMessage(event)" class="flex gap-2">
+            <input 
+              id="userInput" 
+              type="text" 
+              placeholder="Type message (or select a 1-click test scenario on the left)..." 
+              class="flex-1 bg-gray-800/80 border border-gray-700 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-emerald-500"
+              required
+            />
+            <button 
+              type="submit" 
+              id="btnSend"
+              class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-sm font-semibold transition flex items-center gap-2"
+            >
+              <span>Send</span> <i class="fas fa-paper-plane text-xs"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Live Pipeline Audit Modal / Card -->
+      <div id="workflowResultCard" class="hidden glass-card p-5 rounded-2xl border border-cyan-500/30">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="text-sm font-bold text-cyan-400 flex items-center gap-2">
+            <i class="fas fa-microchip"></i> Multi-Agent Pipeline Execution Result
+          </h3>
+          <span id="wfDuration" class="text-xs bg-cyan-900/60 text-cyan-300 px-2 py-0.5 rounded-full border border-cyan-500/30">0 ms</span>
+        </div>
+        <div id="wfSteps" class="space-y-2 text-xs"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    let activeChannel = 'whatsapp';
+
+    function setChannel(ch) {
+      activeChannel = ch;
+      ['whatsapp', 'web', 'email'].forEach(c => {
+        const btn = document.getElementById('btnCh' + c.charAt(0).toUpperCase() + c.slice(1));
+        if (c === ch) {
+          btn.className = 'py-2 rounded-lg text-xs font-medium border border-emerald-500 bg-emerald-500/20 text-emerald-300';
+        } else {
+          btn.className = 'py-2 rounded-lg text-xs font-medium border border-gray-700 bg-gray-800 text-gray-400';
+        }
+      });
+      document.getElementById('agentSubtitle').innerHTML = `Channel: <span class="text-emerald-400 font-medium">${ch.toUpperCase()}</span> • Auto-routing with Groq LPU`;
+    }
+
+    function injectScenario(type) {
+      const input = document.getElementById('userInput');
+      const selVertical = document.getElementById('selVertical');
+
+      if (type === 'plastopack') {
+        selVertical.value = 'manufacturing';
+        setChannel('whatsapp');
+        document.getElementById('avatarBadge').innerText = '📦';
+        document.getElementById('agentTitle').innerText = 'JM PlastoPack Manufacturing Bot';
+        input.value = "Hello! We urgently need 25,000 HDPE tamper-evident bottles for our agrochemical plant in Sanand. What is your best MOQ price and lead time? Also check status of order JMP-7721.";
+      } else if (type === 'logistics') {
+        selVertical.value = 'logistics';
+        setChannel('whatsapp');
+        document.getElementById('avatarBadge').innerText = '🚚';
+        document.getElementById('agentTitle').innerText = 'UAE Logistics Lead Reviver';
+        input.value = "Hi, I saw your WhatsApp message about lower freight rates. We paused shipments last month due to high demurrage. Do you really have 20ft slots from Dubai to Mundra under $650?";
+      } else if (type === 'realestate') {
+        selVertical.value = 'real_estate';
+        setChannel('web');
+        document.getElementById('avatarBadge').innerText = '🏢';
+        document.getElementById('agentTitle').innerText = 'AuraEstate Sales Copilot';
+        input.value = "Looking for an ultra-luxury 4 BHK penthouse in Ahmedabad with golf-course view. Budget around ₹3.5 Cr. Can you share floor plans?";
+      } else if (type === 'pharma') {
+        selVertical.value = 'pharma';
+        setChannel('email');
+        document.getElementById('avatarBadge').innerText = '💊';
+        document.getElementById('agentTitle').innerText = 'PharmaDoc Compliance Validator';
+        input.value = "Subject: Urgent review required for Export Batch Paracetamol 500mg. During granulation, humidity reached 68% for 45 minutes. Please draft the regulatory deviation assessment for WHO-GMP audit readiness.";
+      }
+      input.focus();
+    }
+
+    async function checkHealth() {
+      try {
+        const res = await fetch('http://localhost:8000/api/health');
+        const data = await res.json();
+        alert(`NexusAI Backend is ONLINE!\nTimestamp: ${data.timestamp}\nGroq: ${data.providers.groq.configured ? 'Active' : 'Simulation Fallback Ready'}\nGemini: ${data.providers.gemini.configured ? 'Active' : 'Simulation Fallback Ready'}`);
+      } catch (err) {
+        alert("Could not reach backend at http://localhost:8000. Make sure uvicorn is running!");
+      }
+    }
+
+    async function runWorkflowSimulation() {
+      const card = document.getElementById('workflowResultCard');
+      const wfSteps = document.getElementById('wfSteps');
+      const wfDuration = document.getElementById('wfDuration');
+      card.classList.remove('hidden');
+      wfSteps.innerHTML = '<p class="text-gray-400 italic">Executing multi-agent pipeline...</p>';
+
+      try {
+        const res = await fetch('http://localhost:8000/api/workflow/execute', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            channel: activeChannel,
+            sender: "+91-98250-99120",
+            message: "Need 25,000 units quote for Sanand delivery."
+          })
+        });
+        const json = await res.json();
+        const data = json.data;
+        wfDuration.innerText = data.total_duration_ms + ' ms';
+
+        wfSteps.innerHTML = data.steps.map(s => `
+          <div class="p-2.5 rounded-lg bg-gray-900 border border-gray-800 flex items-start gap-2.5">
+            <span class="w-5 h-5 rounded-full bg-cyan-950 text-cyan-400 border border-cyan-800 flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">${s.step}</span>
+            <div class="flex-1">
+              <div class="flex items-center justify-between">
+                <span class="font-semibold text-gray-200">${s.node_label}</span>
+                <span class="text-[10px] text-cyan-400">${s.execution_ms} ms</span>
+              </div>
+              <p class="text-gray-400 mt-0.5">${s.log}</p>
+            </div>
+          </div>
+        `).join('');
+
+      } catch (err) {
+        wfSteps.innerHTML = `<p class="text-red-400">Pipeline execution error: ${err.message}</p>`;
+      }
+    }
+
+    async function sendMessage(e) {
+      e.preventDefault();
+      const input = document.getElementById('userInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const feed = document.getElementById('messagesFeed');
+      const vertical = document.getElementById('selVertical').value;
+      const model = document.getElementById('selModel').value;
+
+      // Add user message
+      feed.innerHTML += `
+        <div class="flex justify-end">
+          <div class="wa-bubble-user p-3 text-xs max-w-[85%] shadow">
+            ${text}
+          </div>
+        </div>
+      `;
+      input.value = '';
+      feed.scrollTop = feed.scrollHeight;
+
+      // Create placeholder bot message
+      const botMsgId = 'bot-' + Date.now();
+      feed.innerHTML += `
+        <div class="flex justify-start">
+          <div id="${botMsgId}" class="wa-bubble-bot p-3 text-xs max-w-[85%] shadow whitespace-pre-wrap">
+            <span class="text-gray-400 animate-pulse">NexusAI is typing...</span>
+          </div>
+        </div>
+      `;
+      feed.scrollTop = feed.scrollHeight;
+
+      const botElement = document.getElementById(botMsgId);
+
+      try {
+        const response = await fetch('http://localhost:8000/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            messages: [{ role: 'user', content: text }],
+            channel: activeChannel,
+            model: model,
+            vertical: vertical
+          })
+        });
+
+        if (!response.ok) throw new Error('API returned status: ' + response.status);
+
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        botElement.innerHTML = '';
+
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          const chunk = decoder.decode(value);
+          botElement.innerText += chunk;
+          feed.scrollTop = feed.scrollHeight;
+        }
+
+      } catch (err) {
+        botElement.innerHTML = `<span class="text-red-400">Connection error: ${err.message}. Is backend running on port 8000?</span>`;
+      }
+    }
+
+    function clearChat() {
+      document.getElementById('messagesFeed').innerHTML = `
+        <div class="flex justify-start">
+          <div class="wa-bubble-bot p-3 text-xs max-w-[85%] shadow">
+            Chat cleared. Select an agent or test scenario to begin!
+          </div>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>

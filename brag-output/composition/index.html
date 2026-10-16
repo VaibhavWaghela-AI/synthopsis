@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Synthopsis Launch Video</title>
+    <!-- GSAP for hyper-precise deterministic timelines -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #111216;
+        color: #111216;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      }
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background-color: #F0EFE9;
+      }
+      
+      /* Technical Cyber Blueprint Grid matching frontend globals.css */
+      .cyber-grid {
+        position: absolute;
+        inset: 0;
+        background-size: 32px 32px;
+        background-image: 
+          linear-gradient(to right, rgba(17, 18, 22, 0.06) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(17, 18, 22, 0.06) 1px, transparent 1px);
+        pointer-events: none;
+      }
+
+      /* Corner Crosshairs */
+      .crosshair {
+        position: absolute;
+        font-family: Consolas, monospace;
+        font-size: 18px;
+        font-weight: 900;
+        color: #111216;
+        opacity: 1;
+        line-height: 1;
+        z-index: 50;
+      }
+
+      .scene {
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+        opacity: 0;
+        pointer-events: none;
+      }
+      
+      .mono {
+        font-family: Consolas, "JetBrains Mono", monospace;
+      }
+
+      .brutal-shadow {
+        box-shadow: 6px 6px 0px #111216;
+      }
+      .brutal-shadow-red {
+        box-shadow: 8px 8px 0px #b91c1c;
+      }
+      .brutal-shadow-lg {
+        box-shadow: 10px 10px 0px #111216;
+      }
+    </style>
+
+    <script>
+      window.__tailwindReady = new Promise(function(resolve) {
+        var loaded = document.readyState === "complete";
+        var resolved = false;
+        var observer;
+        function readTailwindCss() {
+          var styles = document.querySelectorAll("style");
+          for (var i = styles.length - 1; i >= 0; i--) {
+            var text = styles[i].textContent || "";
+            if (text.indexOf("tailwindcss v") !== -1) return text;
+          }
+          return "";
+        }
+        function finish() {
+          if (resolved || !loaded || !readTailwindCss()) return;
+          resolved = true;
+          if (observer) observer.disconnect();
+          resolve(true);
+        }
+        observer = new MutationObserver(finish);
+        observer.observe(document.documentElement, { childList: true, subtree: true, characterData: true });
+        if (loaded) { finish(); } else { window.addEventListener("load", function() { loaded = true; finish(); }, { once: true }); }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.2.4/dist/index.global.js"></script>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="18"
+      data-width="1920"
+      data-height="1080"
+      class="border-[12px] border-[#111216]"
+    >
+      <div class="cyber-grid"></div>
+
+      <!-- Crosshairs in 4 corners matching frontend hud-wrapper -->
+      <div data-layout-allow-overlap class="crosshair top-20 left-6">+</div>
+      <div data-layout-allow-overlap class="crosshair top-20 right-6">+</div>
+      <div data-layout-allow-overlap class="crosshair bottom-6 left-6">+</div>
+      <div data-layout-allow-overlap class="crosshair bottom-6 right-6">+</div>
+
+      <!-- Persistent HUD Top Navigation Bar matching frontend header -->
+      <header id="hud-nav" class="absolute top-0 left-0 right-0 h-16 border-b-2 border-[#111216] bg-[#F0EFE9] px-8 flex items-center justify-between z-40 mono text-xs font-bold">
+        <div class="flex items-center gap-6">
+          <div class="flex items-center gap-2 text-xl font-black tracking-tight text-[#111216]">
+            SYNTHOPSIS
+            <svg class="w-4 h-4 text-[#111216]" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <rect x="0" y="4" width="2" height="12" />
+              <rect x="4" y="0" width="2" height="16" />
+              <rect x="8" y="6" width="2" height="10" />
+              <rect x="12" y="0" width="2" height="16" />
+            </svg>
+          </div>
+          <div class="flex items-center gap-4 text-[11px] text-[#111216] uppercase tracking-widest pl-4 border-l-2 border-[#111216]">
+            <div>01 // STUDIO</div>
+            <div class="text-[#111216]">|</div>
+            <div>02 // WORKFLOWS</div>
+            <div class="text-[#111216]">|</div>
+            <div>03 // INBOX</div>
+            <div class="text-[#111216]">|</div>
+            <div>04 // ROI TELEMETRY</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-6 text-[11px]">
+          <div class="flex items-center gap-2">
+            <div class="w-2 h-2 rounded-full bg-emerald-600"></div>
+            <div class="text-[#111216]">SYS ONLINE // 200 OK</div>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-2 h-2 rounded-full bg-[#b91c1c]"></div>
+            <div class="text-[#111216]">GROQ LPU CORE // 500 TOK/S</div>
+          </div>
+          <div class="bg-[#111216] text-white px-3 py-1 text-[11px] font-bold uppercase tracking-wider">
+            CONSOLE v4.02 →
+          </div>
+        </div>
+      </header>
+
+      <!-- Audio Track -->
+      <audio id="bgm" data-start="0" data-duration="18" data-track-index="1" data-volume="0.85" src="assets/music/bgm.mp3"></audio>
+
+      <!-- ================= SCENE 1: THE HOOK (0s - 4.5s) ================= -->
+      <div id="scene1" class="scene">
+        <div class="flex flex-col items-center gap-8 max-w-6xl text-center">
+          <!-- Technical Badge -->
+          <div id="s1-badge" data-layout-allow-overlap class="inline-flex items-center gap-3 px-6 py-2 bg-white border-2 border-[#111216] text-[#111216] text-sm font-bold uppercase tracking-widest mono brutal-shadow">
+            <div class="w-2.5 h-2.5 rounded-full bg-[#b91c1c]"></div>
+            <div>+ SYNTHESIS / V4.02 // BOTTLENECK AUDIT</div>
+          </div>
+          
+          <div class="flex flex-col items-center gap-6">
+            <h2 id="s1-line1" data-layout-allow-overlap class="text-3xl md:text-4xl font-black tracking-widest text-[#111216] uppercase">
+              TRADITIONAL B2B SALES INQUIRIES
+            </h2>
+            
+            <h1 id="s1-line2" data-layout-allow-overlap class="text-6xl md:text-7xl font-black tracking-tight text-[#111216] uppercase leading-none">
+              TAKE <span class="bg-[#b91c1c] text-white px-6 py-2 border-4 border-[#111216] brutal-shadow">4 HOURS</span> PER LEAD.
+            </h1>
+          </div>
+          
+          <!-- Bottom Pivot Banner -->
+          <div id="s1-pivot" data-layout-allow-overlap class="mt-4 flex items-center justify-center">
+            <div class="p-6 bg-[#111216] text-white border-4 border-[#111216] brutal-shadow-lg flex items-center gap-6">
+              <span class="text-2xl mono font-black uppercase tracking-wider text-white">SYNTHOPSIS EXECUTION TIME:</span>
+              <span class="text-5xl font-black mono px-6 py-1.5 bg-[#b91c1c] text-white border-2 border-white">
+                376 MILLISECONDS
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= SCENE 2: THE VISUAL WORKFLOW DAG (4.5s - 9.5s) ================= -->
+      <div id="scene2" class="scene">
+        <div class="w-[1640px] space-y-5">
+          <div class="flex items-center justify-between border-b-2 border-[#111216] pb-3">
+            <div>
+              <div class="text-xs uppercase tracking-widest text-[#b91c1c] mono font-black">// ARCHITECTURE</div>
+              <h2 class="text-4xl font-black text-[#111216] uppercase tracking-tight">VISUAL WORKFLOW DAG ORCHESTRATION</h2>
+            </div>
+            <div class="flex items-center gap-3 px-5 py-2 bg-white border-2 border-[#111216] mono text-xs text-[#111216] font-black brutal-shadow">
+              <div class="w-2.5 h-2.5 rounded-full bg-emerald-600"></div>
+              <div>GROQ LPU REASONING // 500 TOKENS/SEC</div>
+            </div>
+          </div>
+
+          <!-- Interactive DAG Circuit Container -->
+          <div class="relative w-full h-[540px] bg-white rounded-none border-4 border-[#111216] px-12 flex items-center justify-between overflow-hidden brutal-shadow-lg">
+            <div class="cyber-grid"></div>
+
+            <!-- Connecting Wire Graphic (SVG) -->
+            <svg class="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+              <path id="dag-wire" opacity="0" d="M 280 270 C 500 270, 560 270, 780 270 C 1000 270, 1080 270, 1340 270" fill="none" stroke="#b91c1c" stroke-width="5" stroke-dasharray="10 6" />
+            </svg>
+
+            <!-- Node 1: Inbound WhatsApp -->
+            <div id="node1" data-layout-allow-overflow class="relative z-10 w-[430px] p-7 bg-white border-3 border-[#111216] brutal-shadow space-y-3">
+              <div class="flex items-center justify-between border-b-2 border-[#111216] pb-2">
+                <span class="text-xs font-black text-[#b91c1c] mono uppercase">01 // EVENT TRIGGER</span>
+                <span class="px-2.5 py-0.5 bg-emerald-100 border border-emerald-800 text-emerald-800 text-xs font-bold mono">WHATSAPP</span>
+              </div>
+              <h4 class="text-xl font-black text-[#111216]">Inbound RFQ Webhook</h4>
+              <p class="text-xs text-[#111216] font-mono leading-relaxed">Sun Pharma Dahej: 50,000 Units 1L HDPE UN Drums</p>
+              <div class="text-[11px] text-zinc-600 mono pt-2 border-t border-zinc-200 flex justify-between font-bold">
+                <span>DPDP Act 2023 Compliant</span>
+                <span class="text-emerald-700">✓ Verified</span>
+              </div>
+            </div>
+
+            <!-- Node 2: Groq Llama 3.3 Reasoner -->
+            <div id="node2" data-layout-allow-overflow class="relative z-10 w-[450px] p-7 bg-white border-3 border-[#111216] brutal-shadow space-y-3">
+              <div class="flex items-center justify-between border-b-2 border-[#111216] pb-2">
+                <span class="text-xs font-black text-amber-700 mono uppercase">02 // AI REASONER</span>
+                <span class="px-2.5 py-0.5 bg-blue-100 border border-blue-800 text-blue-800 text-xs font-bold mono">GROQ 70B</span>
+              </div>
+              <h4 class="text-xl font-black text-[#111216]">Groq LPU Engine</h4>
+              <p class="text-xs text-[#111216] font-mono leading-relaxed">Calculated Commercial Deal: ₹13,25,000 (50k @ ₹26.50)</p>
+              <div class="text-[11px] text-zinc-600 mono pt-2 border-t border-zinc-200 flex justify-between font-bold">
+                <span>Latency: 182ms</span>
+                <span class="text-amber-700">Intent: Bulk RFQ</span>
+              </div>
+            </div>
+
+            <!-- Node 3: Deal Gate -->
+            <div id="node3" data-layout-allow-overflow class="relative z-10 w-[430px] p-7 bg-white border-3 border-[#111216] brutal-shadow space-y-3">
+              <div class="flex items-center justify-between border-b-2 border-[#111216] pb-2">
+                <span class="text-xs font-black text-purple-700 mono uppercase">03 // DECISION GATE</span>
+                <span class="px-2.5 py-0.5 bg-purple-100 border border-purple-800 text-purple-800 text-xs font-bold mono">CONDITION</span>
+              </div>
+              <h4 class="text-xl font-black text-[#111216]">Deal Threshold Gate</h4>
+              <p class="text-xs text-emerald-700 font-bold font-mono leading-relaxed">₹13.25L &gt;= ₹2.5L VIP Threshold</p>
+              <div class="text-[11px] text-emerald-800 font-mono pt-2 border-t border-zinc-200 flex justify-between font-bold">
+                <span>ACTION: ERP GENERATION</span>
+                <span>STATUS: VIP ROUTE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= SCENE 3: TALLY ERP VOUCHER GENERATION (9.5s - 14.5s) ================= -->
+      <div id="scene3" class="scene">
+        <div class="w-[1640px] space-y-6">
+          <div class="flex items-center justify-between border-b-2 border-[#111216] pb-3">
+            <div>
+              <div class="text-xs uppercase tracking-widest text-[#b91c1c] mono font-black">// EXECUTION PIPELINE</div>
+              <h2 class="text-4xl font-black text-[#111216] uppercase tracking-tight">OMNICHANNEL INGESTION → INSTANT TALLY ERP VOUCHER</h2>
+            </div>
+            <div class="flex items-center gap-3 px-5 py-2 bg-white border-2 border-[#111216] mono text-xs text-[#111216] font-black brutal-shadow">
+              <div class="w-2.5 h-2.5 rounded-full bg-emerald-600"></div>
+              <div>END-TO-END LATENCY: 376ms</div>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between gap-10">
+            <!-- Left: WhatsApp Inbound Message Card -->
+            <div id="s3-wa-card" class="w-[780px] p-8 bg-white border-4 border-[#111216] brutal-shadow space-y-4">
+              <div class="flex items-center justify-between border-b-2 border-[#111216] pb-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 rounded-full bg-[#111216] text-white flex items-center justify-center font-black text-lg border-2 border-[#111216]">SP</div>
+                  <div>
+                    <div class="text-lg font-black text-[#111216]">Sun Pharma Chemicals Dahej</div>
+                    <div class="text-xs text-emerald-700 mono font-bold">WhatsApp Business Cloud • Verified Enterprise</div>
+                  </div>
+                </div>
+                <span class="text-xs text-zinc-600 mono font-bold">10:14 AM</span>
+              </div>
+              <div class="p-5 bg-[#f4f4f7] border-2 border-[#111216] text-[#111216] text-base leading-relaxed font-sans">
+                "Urgent: Need 50,000 units of 1L HDPE chemical drums with UN certification and tamper-proof induction seals. Deliver to Dahej SEZ within 10 days. Send proforma quote and TDS."
+              </div>
+              <div class="flex items-center justify-between text-xs text-zinc-600 mono font-bold pt-1">
+                <span>Message Status: Delivered ✓✓</span>
+                <span class="text-emerald-800 text-sm font-black">Pipeline Output: 376ms</span>
+              </div>
+            </div>
+
+            <!-- Right: Tally ERP Output Card with Stamp -->
+            <div id="s3-tally-card" class="relative w-[780px] p-8 bg-white border-4 border-[#111216] brutal-shadow-red space-y-4 font-mono">
+              <!-- Official Rubber Stamp with high contrast black text on emerald green -->
+              <div id="tally-stamp" data-layout-allow-overlap class="absolute top-4 right-4 px-5 py-2 font-black text-base rotate-6 shadow-md bg-emerald-400 text-[#111216] border-2 border-[#111216]">
+                ★ TALLY PRIME VERIFIED
+              </div>
+
+              <div class="text-xs uppercase font-black text-zinc-600 tracking-wider">AUTOMATED ERP VOUCHER GENERATED</div>
+              <h3 class="text-2xl font-black text-[#111216]">VOUCHER #SYN-TALLY-2026-2143</h3>
+
+              <div class="space-y-1.5 text-xs border-y-2 border-zinc-300 py-3">
+                <div class="flex justify-between font-bold text-zinc-900">
+                  <span>BUYER:</span>
+                  <span class="text-black">Sun Pharma Chemicals Dahej SEZ</span>
+                </div>
+                <div class="flex justify-between font-bold text-zinc-900">
+                  <span>ITEM:</span>
+                  <span class="text-black">1L HDPE UN Drums (50,000 Units)</span>
+                </div>
+                <div class="flex justify-between font-bold text-zinc-900">
+                  <span>LEDGER:</span>
+                  <span class="text-black">Sundry Debtors // Fast-Track SEZ</span>
+                </div>
+                <div class="flex justify-between text-lg font-black text-[#b91c1c] pt-1">
+                  <span>TOTAL COMMERCIAL VALUE:</span>
+                  <span>₹13,25,000</span>
+                </div>
+              </div>
+
+              <div class="text-xs text-zinc-700 font-sans font-bold leading-tight">
+                ✓ Sales VP alerted via priority SMS<br>
+                ✓ Official PDF quotation dispatched back to WhatsApp in 376ms
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= SCENE 4: GRAND FINALE / LOGO REVEAL (14.5s - 18.0s) ================= -->
+      <div id="scene4" class="scene">
+        <div class="text-center space-y-6 max-w-5xl">
+          <!-- Vector Wordmark Graphic -->
+          <div id="s4-logo" class="w-[840px] mx-auto">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1104 120" width="100%" height="90" class="text-[#111216]">
+              <!-- s -->
+              <g transform="translate(0,0)"><polygon points="0,0 80,0 100,24 24,24" fill="#111216"/><polygon points="20,38 100,38 80,62 0,62" fill="#111216"/><polygon points="0,76 80,76 100,100 24,100" fill="#111216"/></g>
+              <!-- y -->
+              <g transform="translate(120,0)"><polygon points="0,0 30,0 50,40 20,40" fill="#111216"/><polygon points="100,0 70,0 50,40 80,40" fill="#111216"/><rect x="38" y="40" width="24" height="60" fill="#111216"/></g>
+              <!-- n -->
+              <g transform="translate(240,0)"><rect x="0" y="0" width="24" height="100" fill="#111216"/><rect x="24" y="0" width="52" height="24" fill="#111216"/><rect x="76" y="24" width="24" height="76" fill="#111216"/></g>
+              <!-- t -->
+              <g transform="translate(360,0)"><rect x="0" y="0" width="100" height="24" fill="#111216"/><rect x="38" y="24" width="24" height="76" fill="#111216"/></g>
+              <!-- h -->
+              <g transform="translate(480,0)"><rect x="0" y="0" width="24" height="100" fill="#111216"/><rect x="24" y="24" width="52" height="24" fill="#111216"/><rect x="76" y="48" width="24" height="52" fill="#111216"/></g>
+              <!-- o -->
+              <g transform="translate(600,0)"><rect x="0" y="0" width="24" height="100" fill="#111216"/><rect x="24" y="0" width="52" height="24" fill="#111216"/><rect x="76" y="0" width="24" height="100" fill="#111216"/><rect x="24" y="76" width="52" height="24" fill="#111216"/></g>
+              <!-- p -->
+              <g transform="translate(720,0)"><rect x="0" y="0" width="24" height="120" fill="#111216"/><rect x="24" y="0" width="52" height="24" fill="#111216"/><rect x="76" y="24" width="24" height="26" fill="#111216"/><rect x="24" y="50" width="52" height="24" fill="#111216"/></g>
+              <!-- s -->
+              <g transform="translate(840,0)"><polygon points="0,0 80,0 100,24 24,24" fill="#111216"/><polygon points="20,38 100,38 80,62 0,62" fill="#111216"/><polygon points="0,76 80,76 100,100 24,100" fill="#111216"/></g>
+              <!-- i -->
+              <g transform="translate(960,0)"><rect x="0" y="0" width="24" height="24" fill="#b91c1c"/><rect x="0" y="38" width="24" height="62" fill="#111216"/></g>
+              <!-- s -->
+              <g transform="translate(1004,0)"><polygon points="0,0 80,0 100,24 24,24" fill="#111216"/><polygon points="20,38 100,38 80,62 0,62" fill="#111216"/><polygon points="0,76 80,76 100,100 24,100" fill="#111216"/></g>
+            </svg>
+          </div>
+
+          <div class="space-y-2">
+            <h2 id="s4-title" class="text-2xl md:text-3xl font-black tracking-tight text-[#111216] max-w-3xl mx-auto leading-tight">
+              The reinvention of business operations through AI agents as infrastructure.
+            </h2>
+            <p id="s4-subtitle" class="text-sm font-bold text-[#b91c1c] tracking-widest mono uppercase">
+              AUTONOMOUS MULTI-AGENT ORCHESTRATION // 500 TOK/SEC GROQ LPU
+            </p>
+          </div>
+
+          <!-- 4 Platform Capability Cards matching frontend Section 4 -->
+          <div id="s4-pills" class="grid grid-cols-4 gap-4 pt-2">
+            <div class="p-4 bg-white border-2 border-[#111216] brutal-shadow text-left">
+              <div class="text-[10px] text-[#b91c1c] font-black mono">01 // STUDIO</div>
+              <div class="text-sm font-black text-[#111216] mt-1">Agent Studio</div>
+              <div class="text-[11px] text-zinc-600 font-sans mt-1">Pre-trained AI agents on WhatsApp, Web & Email.</div>
+            </div>
+            <div class="p-4 bg-white border-2 border-[#111216] brutal-shadow text-left">
+              <div class="text-[10px] text-[#b91c1c] font-black mono">02 // WORKFLOWS</div>
+              <div class="text-sm font-black text-[#111216] mt-1">Workflow DAG</div>
+              <div class="text-[11px] text-zinc-600 font-sans mt-1">Visual drag-and-drop pipeline & deal-gate routing.</div>
+            </div>
+            <div class="p-4 bg-white border-2 border-[#111216] brutal-shadow text-left">
+              <div class="text-[10px] text-[#b91c1c] font-black mono">03 // INBOX</div>
+              <div class="text-sm font-black text-[#111216] mt-1">Omni Inbox</div>
+              <div class="text-[11px] text-zinc-600 font-sans mt-1">Unified live message threads & simulated test runs.</div>
+            </div>
+            <div class="p-4 bg-white border-2 border-[#111216] brutal-shadow text-left">
+              <div class="text-[10px] text-[#b91c1c] font-black mono">04 // TELEMETRY</div>
+              <div class="text-sm font-black text-[#111216] mt-1">Tally & ERP</div>
+              <div class="text-[11px] text-zinc-600 font-sans mt-1">Sub-second vouchers & verified DPDP compliance.</div>
+            </div>
+          </div>
+
+          <div id="s4-footer" style="margin-top: 32px;">
+            <span class="inline-block bg-[#111216] text-white font-mono text-xs font-bold uppercase tracking-wider px-6 py-2.5 border-2 border-[#111216] brutal-shadow">
+              DEPLOY AI WORKFORCE →
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- GSAP TIMELINE SCRIPT -->
+    <script>
+      // Immediate baseline initialization
+      gsap.set(".scene", { display: "none", opacity: 0 });
+      gsap.set("#node1", { opacity: 0, x: -80 });
+      gsap.set("#node2", { opacity: 0, y: 50, borderColor: "#111216" });
+      gsap.set("#node3", { opacity: 0, x: 80, borderColor: "#111216" });
+      gsap.set("#dag-wire", { opacity: 0 });
+
+      const tl = gsap.timeline({ paused: true });
+
+      // Scene 1 (0s to 4.5s)
+      tl.set("#scene1", { display: "flex", opacity: 1 }, 0);
+      tl.fromTo("#s1-badge", { opacity: 0, y: -25 }, { opacity: 1, y: 0, duration: 0.5 }, 0.2);
+      tl.fromTo("#s1-line1", { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, 0.5);
+      tl.fromTo("#s1-line2", { opacity: 0, scale: 1.12 }, { opacity: 1, scale: 1, duration: 0.7, ease: "back.out(1.4)" }, 1.0);
+      tl.fromTo("#s1-pivot", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.6 }, 1.8);
+      tl.to("#scene1", { opacity: 0, scale: 0.95, duration: 0.45, ease: "power2.in" }, 4.0);
+      tl.set("#scene1", { display: "none" }, 4.5);
+
+      // Scene 2 (4.5s to 9.5s)
+      tl.set("#scene2", { display: "flex", opacity: 1 }, 4.5);
+      tl.to("#node1", { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 4.7);
+      tl.to("#dag-wire", { opacity: 0.85, duration: 0.5 }, 5.2);
+      tl.to("#node2", { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 5.5);
+      tl.to("#node3", { opacity: 1, x: 0, duration: 0.6, ease: "power2.out" }, 6.2);
+      tl.to("#node2", { borderColor: "#b91c1c", duration: 0.4, repeat: 1, yoyo: true }, 7.0);
+      tl.to("#node3", { borderColor: "#059669", duration: 0.4 }, 7.5);
+      tl.to("#scene2", { opacity: 0, scale: 0.95, duration: 0.45, ease: "power2.in" }, 9.0);
+      tl.set("#scene2", { display: "none" }, 9.5);
+
+      // Scene 3 (9.5s to 14.5s)
+      tl.set("#scene3", { display: "flex", opacity: 1 }, 9.5);
+      tl.fromTo("#s3-wa-card", { opacity: 0, x: -100 }, { opacity: 1, x: 0, duration: 0.7, ease: "power2.out" }, 9.7);
+      tl.fromTo("#s3-tally-card", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.7, ease: "back.out(1.5)" }, 10.4);
+      tl.fromTo("#tally-stamp", { opacity: 0, scale: 2.2, rotate: 25 }, { opacity: 1, scale: 1, rotate: 6, duration: 0.45, ease: "bounce.out" }, 11.2);
+      tl.to("#scene3", { opacity: 0, scale: 0.95, duration: 0.45, ease: "power2.in" }, 14.0);
+      tl.set("#scene3", { display: "none" }, 14.5);
+
+      // Scene 4 (14.5s to 18.0s)
+      tl.set("#scene4", { display: "flex", opacity: 1 }, 14.5);
+      tl.fromTo("#s4-logo", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.5)" }, 14.6);
+      tl.fromTo("#s4-title", { opacity: 0, y: 25 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, 15.0);
+      tl.fromTo("#s4-subtitle", { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5 }, 15.4);
+      tl.fromTo("#s4-pills", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5 }, 15.8);
+      tl.fromTo("#s4-footer", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.5 }, 16.3);
+
+      // Register timeline with Hyperframes
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>
